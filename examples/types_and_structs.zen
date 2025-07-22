@@ -1,0 +1,63 @@
+// Example showcasing types, structures, and arrays
+type User = {
+    id: string,
+    name: string,
+    email: ?string,
+    age: i32,
+}
+
+type Product = {
+    id: string,
+    name: string,
+    price: f64,
+    in_stock: bool,
+}
+
+func main() -> i32 {
+    // Create users
+    let users: User[] = [
+        User("1", "Alice Johnson", "alice@example.com", 28),
+        User("2", "Bob Smith", null, 35),
+        User("3", "Carol Williams", "carol@example.com", 42),
+    ];
+    
+    // Process users
+    processUsers(users);
+    
+    // Create products
+    let products: Product[] = [
+        Product("p1", "Laptop", 999.99, true),
+        Product("p2", "Mouse", 29.99, false),
+        Product("p3", "Keyboard", 79.99, true),
+    ];
+    
+    // Show available products
+    showAvailableProducts(products);
+    
+    return 0;
+}
+
+func processUsers(users: User[]) {
+    print("Processing users:");
+    
+    for (user in users) {
+        if (user.age in 18..65) {
+            const email_status = if (user.email != null) "has email" else "no email";
+            print(`  - ${user.name} (${user.age}): ${email_status}`);
+        }
+    }
+}
+
+func showAvailableProducts(products: Product[]) {
+    print("Available products:");
+    
+    for (product in products) {
+        if (product.in_stock) {
+            print(`  - ${product.name}: $${product.price}`);
+        }
+    }
+}
+
+func print(text: string) {
+    // Runtime implementation
+}

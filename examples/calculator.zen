@@ -1,0 +1,39 @@
+// Calculator example showcasing basic arithmetic and functions
+func main() -> i32 {
+    const a: i32 = 10;
+    const b: i32 = 5;
+    
+    let result = add(a, b);
+    print(`${a} + ${b} = ${result}`);
+    
+    result = multiply(a, b);
+    print(`${a} * ${b} = ${result}`);
+    
+    const division_result = divide(a, b)?;
+    print(`${a} / ${b} = ${division_result}`);
+    
+    return 0;
+}
+
+func add(x: i32, y: i32) -> i32 {
+    return x + y;
+}
+
+func multiply(x: i32, y: i32) -> i32 {
+    return x * y;
+}
+
+func divide(x: i32, y: i32) -> Result<i32, Error> {
+    if (y == 0) {
+        throw Error("Division by zero");
+    }
+    return x / y;
+}
+
+type Error = {
+    message: string,
+}
+
+func print(text: string) {
+    // Runtime implementation
+}

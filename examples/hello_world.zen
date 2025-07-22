@@ -1,0 +1,15 @@
+// Hello World in Zen - Basic function with string interpolation
+func main() -> i32 {
+    const message: string = "Hello, World!";
+    const version: string = "0.1.0";
+    
+    print("Welcome to Zen v0.1.0");
+    print(message);
+    
+    return 0;
+}
+
+func print(text: string) {
+    // This will be implemented by the runtime
+    // For now, it's just a placeholder
+}
