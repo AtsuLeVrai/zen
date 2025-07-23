@@ -1,3 +1,287 @@
-.zig-cache/
-zig-out/
+# Zen Programming Language Compiler - .gitignore
+
+# =============================================================================
+# Build Artifacts
+# =============================================================================
+
+# Compiled Object files
 *.o
+*.obj
+*.lo
+*.la
+*.al
+*.libs
+*.so
+*.so.*
+*.dylib
+*.dll
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+zen
+zen.exe
+zen-compiler
+zen-compiler.exe
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# =============================================================================
+# CMake
+# =============================================================================
+
+# CMake build directories
+build/
+cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+*.cmake
+!CMakeLists.txt
+
+# =============================================================================
+# IDE Files
+# =============================================================================
+
+# CLion
+.idea/
+*.iws
+*.iml
+*.ipr
+cmake-build-debug/
+cmake-build-release/
+
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# Visual Studio
+*.vs/
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.sln
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# =============================================================================
+# Operating System Files
+# =============================================================================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.tmp
+*.temp
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# =============================================================================
+# Development Tools
+# =============================================================================
+
+# GDB
+.gdb_history
+gdb.txt
+
+# Valgrind
+vgcore.*
+*.memcheck
+*.helgrind
+*.drd
+*.massif
+*.callgrind
+
+# Profiling
+gmon.out
+*.gcov
+*.gcda
+*.gcno
+*.profdata
+
+# Static Analysis
+*.plist
+scan-build-*/
+
+# =============================================================================
+# Documentation
+# =============================================================================
+
+# Doxygen
+docs/html/
+docs/latex/
+docs/xml/
+
+# =============================================================================
+# Testing
+# =============================================================================
+
+# Test results
+test_results/
+*.tap
+*.junit
+*.testlog
+
+# Coverage reports
+coverage/
+*.info
+lcov.info
+
+# =============================================================================
+# Package Managers (future)
+# =============================================================================
+
+# Node.js (if using for tooling)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Python (if using for scripts)
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# =============================================================================
+# Zen-specific Files
+# =============================================================================
+
+# Zen test files and outputs
+test_output/
+*.zen.out
+*.zen.wasm
+*.zen.exe
+*.zen.obj
+
+# Temporary compilation files
+*.tmp.c
+*.tmp.h
+*.intermediate
+
+# Zen package cache (future)
+.zen/
+zen_packages/
+
+# Benchmark results
+benchmarks/results/
+*.benchmark
+
+# =============================================================================
+# Security & Secrets
+# =============================================================================
+
+# API keys and secrets
+.env
+.env.local
+.env.*.local
+secrets.json
+*.key
+*.pem
+*.crt
+
+# =============================================================================
+# Logs
+# =============================================================================
+
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# =============================================================================
+# Backup Files
+# =============================================================================
+
+*.bak
+*.backup
+*.old
+*.orig
+*.rej
+*.swp
+*.tmp
+
+# =============================================================================
+# Custom Ignores
+# =============================================================================
+
+# Add your custom ignores here
+# example_ignore/

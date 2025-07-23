@@ -1,8 +1,10 @@
 {
   "permissions": {
     "allow": [
-      "Bash(zig build)",
-      "Bash(./zig-out/bin/zen.exe:*)"
+      "Bash(mkdir:*)",
+      "Bash(cmake:*)",
+      "Bash(make:*)",
+      "Bash(cp:*)"
     ],
     "deny": []
   }
