@@ -1,0 +1,10 @@
+name: Benchmarks
+
+on: [push]
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run benchmarks
+        run: echo "Running benchmarks..."

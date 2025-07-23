@@ -1,0 +1,1 @@
+void zen_doc_generator_dummy() { (void)0; }

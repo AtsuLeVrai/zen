@@ -1,0 +1,1 @@
+add_executable(zen-doc src/main.c src/doc_generator.c)

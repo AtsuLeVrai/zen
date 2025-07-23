@@ -1,0 +1,15 @@
+name: Sanitizers
+
+on: [push, pull_request]
+
+jobs:
+  sanitize:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: build_and_sanitize
+      run: |
+        mkdir -p cmake-build-debug
+        cd cmake-build-debug
+        cmake .. -DCMAKE_BUILD_TYPE=Debug -DENABLE_ASAN=ON
+        cmake --build .

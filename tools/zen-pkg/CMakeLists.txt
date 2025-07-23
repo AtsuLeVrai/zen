@@ -1,0 +1,1 @@
+add_executable(zen-pkg src/main.c src/package_manager.c)

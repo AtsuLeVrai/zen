@@ -1,0 +1,4 @@
+#ifndef ZEN_OPTIONALS_H
+#define ZEN_OPTIONALS_H
+
+#endif //ZEN_OPTIONALS_H

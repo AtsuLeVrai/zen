@@ -1,0 +1,4 @@
+#ifndef ZEN_TARGET_SYSTEM_H
+#define ZEN_TARGET_SYSTEM_H
+
+#endif //ZEN_TARGET_SYSTEM_H

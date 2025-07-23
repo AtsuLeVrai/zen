@@ -1,0 +1,1 @@
+void zen_dts_generator_dummy() { (void)0; }

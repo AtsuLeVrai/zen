@@ -1,0 +1,1 @@
+void zen_vector_dummy() { (void)0; }
