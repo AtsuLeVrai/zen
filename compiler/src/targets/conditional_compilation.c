@@ -1,1 +1,0 @@
-void zen_conditional_compilation_dummy() { (void)0; }

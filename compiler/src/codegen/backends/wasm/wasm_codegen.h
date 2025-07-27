@@ -1,4 +1,0 @@
-#ifndef ZEN_WASM_CODEGEN_H
-#define ZEN_WASM_CODEGEN_H
-
-#endif //ZEN_WASM_CODEGEN_H

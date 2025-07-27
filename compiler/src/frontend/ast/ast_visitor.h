@@ -1,4 +1,0 @@
-#ifndef ZEN_AST_VISITOR_H
-#define ZEN_AST_VISITOR_H
-
-#endif //ZEN_AST_VISITOR_H

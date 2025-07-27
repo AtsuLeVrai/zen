@@ -1,4 +1,0 @@
-#ifndef ZEN_NPM_PACKAGE_H
-#define ZEN_NPM_PACKAGE_H
-
-#endif //ZEN_NPM_PACKAGE_H

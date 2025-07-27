@@ -1,1 +1,0 @@
-void zen_hashmap_dummy() { (void)0; }

@@ -1,1 +1,0 @@
-add_executable(zen-test src/main.c src/test_runner.c)

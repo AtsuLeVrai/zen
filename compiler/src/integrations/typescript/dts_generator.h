@@ -1,4 +1,0 @@
-#ifndef ZEN_DTS_GENERATOR_H
-#define ZEN_DTS_GENERATOR_H
-
-#endif //ZEN_DTS_GENERATOR_H

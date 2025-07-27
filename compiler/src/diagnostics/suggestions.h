@@ -1,4 +1,0 @@
-#ifndef SUGGESTIONS_H
-#define SUGGESTIONS_H
-
-#endif //SUGGESTIONS_H

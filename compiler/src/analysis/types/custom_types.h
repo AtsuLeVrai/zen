@@ -1,4 +1,0 @@
-#ifndef ZEN_CUSTOM_TYPES_H
-#define ZEN_CUSTOM_TYPES_H
-
-#endif //ZEN_CUSTOM_TYPES_H

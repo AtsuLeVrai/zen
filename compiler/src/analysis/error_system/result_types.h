@@ -1,4 +1,0 @@
-#ifndef ZEN_RESULT_TYPES_H
-#define ZEN_RESULT_TYPES_H
-
-#endif //ZEN_RESULT_TYPES_H

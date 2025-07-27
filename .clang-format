@@ -1,7 +1,0 @@
-# Zen Language - Clang-Format
-
-Language: C
-BasedOnStyle: LLVM
-IndentWidth: 4
-UseTab: Never
-ColumnLimit: 80

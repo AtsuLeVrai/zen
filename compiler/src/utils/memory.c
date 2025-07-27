@@ -1,1 +1,0 @@
-void zen_memory_dummy() { (void)0; }

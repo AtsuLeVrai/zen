@@ -1,5 +1,0 @@
-func main() -> i32 {
-    const greeting: string = "Hello, Zen World!";
-    print(greeting);
-    return 0;
-}

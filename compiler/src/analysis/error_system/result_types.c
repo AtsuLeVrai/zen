@@ -1,1 +1,0 @@
-void zen_result_types_dummy() { (void)0; }

@@ -1,4 +1,0 @@
-#ifndef DIAGNOSTICS_H
-#define DIAGNOSTICS_H
-
-#endif //DIAGNOSTICS_H

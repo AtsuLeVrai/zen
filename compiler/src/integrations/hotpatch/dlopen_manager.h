@@ -1,4 +1,0 @@
-#ifndef DLOPEN_MANAGER_H
-#define DLOPEN_MANAGER_H
-
-#endif //DLOPEN_MANAGER_H

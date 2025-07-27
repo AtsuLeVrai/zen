@@ -1,1 +1,0 @@
-void zen_wasm_codegen_dummy() { (void)0; }

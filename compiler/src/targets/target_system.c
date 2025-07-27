@@ -1,1 +1,0 @@
-void zen_target_system_dummy() { (void)0; }

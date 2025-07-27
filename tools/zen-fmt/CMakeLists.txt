@@ -1,1 +1,0 @@
-add_executable(zen-fmt src/main.c src/formatter.c)

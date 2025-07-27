@@ -1,1 +1,0 @@
-void zen_error_propagation_dummy() { (void)0; }

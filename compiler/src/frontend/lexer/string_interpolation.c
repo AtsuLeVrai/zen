@@ -1,1 +1,0 @@
-void zen_string_interpolation_dummy() { (void)0; }

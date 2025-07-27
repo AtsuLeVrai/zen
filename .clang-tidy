@@ -1,3 +1,0 @@
-# Zen Language - Clang-Tidy
-
-Checks: '-*,performance-*,modernize-*,readability-*'

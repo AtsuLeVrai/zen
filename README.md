@@ -294,14 +294,16 @@ Hot-patching enabled for development mode
 
 ### Chosen Technologies
 
-- **Compiler Language**: **C** (total control + maximum performance + universal portability)
-    - **100% from scratch** - complete control over every aspect
-    - **Universal compilation** via GCC/Clang to native + WebAssembly
-    - **Zero runtime overhead** - pure machine code generation
-    - **Battle-tested** - All legendary compilers (GCC, Clang, TCC) are in C
-    - **Maximum portability** - runs everywhere, compiles to everything
-    - **Direct memory control** - custom memory management without abstractions
-    - **Perfect for innovations** - total freedom to implement crazy ideas
+- **Compiler Language**: **C++26** (total control + modern features + maximum performance + universal portability)
+   - **100% from scratch** - complete control over every aspect
+   - **Universal compilation** via GCC/Clang to native + WebAssembly
+   - **Zero runtime overhead** - pure machine code generation
+   - **Modern C++** features: smart pointers, STL containers, RAII, templates
+   - **Battle-tested** - LLVM, GCC are largely C++, proven for compiler development
+   - **Maximum portability** - runs everywhere, compiles to everything
+   - **Advanced memory control** - RAII + smart pointers for automatic cleanup
+   - **Perfect for innovations** - OOP + templates for clean architecture
+   - **STL power** - vectors, maps, strings for efficient data structures
 - **Architecture**: Compiler **completely from scratch** (no LLVM, no external frameworks)
 - **Approach**: **Open source from day one**
 
@@ -315,36 +317,38 @@ Hot-patching enabled for development mode
 
 ### Interoperability
 
-- **C Integration**: Native since compiler is in C
+- **C++ Integration**: Native since compiler is in C++
+- **C Integration**: Excellent via extern "C"
 - **Other languages**: To be evaluated based on future community needs
 
 ---
 
 ## 📅 Detailed Timeline and Phases
 
-### Phase 0: C Mastery & Architecture (1-2 months)
+### Phase 0: C++ Mastery & Architecture (1-2 months)
 
-**Objective**: Master C for compiler development and design architecture
+**Objective**: Master modern C++ for compiler development and design architecture
 
 #### Learning Steps:
 
-1. **Advanced C techniques** (2 weeks)
-    - Memory management patterns
-    - Function pointers and callbacks
-    - Modular C architecture
-    - Build systems (Make, CMake)
+1. **Modern C++ techniques** (2 weeks)
+   - Smart pointers (unique_ptr, shared_ptr, weak_ptr)
+   - RAII patterns and resource management
+   - STL containers and algorithms
+   - Templates and metaprogramming
+   - Build systems (CMake, Ninja)
 
-2. **Compiler theory deep dive** (2 weeks)
-    - Study "Crafting Interpreters"
-    - Analyze TinyCC source code
-    - Study Lua VM implementation
-    - Lexing/Parsing algorithms in C
+2. **Compiler theory with C++** (2 weeks)
+   - Study "Crafting Interpreters" with C++ adaptation
+   - Analyze LLVM C++ architecture patterns
+   - Study modern C++ compiler design
+   - Lexing/Parsing with modern C++ patterns
 
 3. **Architecture design** (2-4 weeks)
-    - Complete module structure
-    - Memory management strategy
-    - Multi-target compilation approach
-    - Error handling system design
+   - Complete OOP module structure
+   - RAII-based memory management strategy
+   - Template-based multi-target compilation
+   - Exception-based error handling system design
 
 ### Phase 1: Foundations (3-6 months)
 
@@ -352,28 +356,28 @@ Hot-patching enabled for development mode
 
 #### Technical Steps:
 
-1. **Complete Lexer in C** (1 month)
-    - All tokens: `func`, `let`, `const`, `->`, `@target`, etc.
-    - String interpolation `${}`
-    - Numbers, strings, identifiers
-    - Comments `//` and `/* */`
-    - Custom memory-efficient token structures
+1. **Complete Lexer in C++** (1 month)
+   - All tokens: `func`, `let`, `const`, `->`, `@target`, etc.
+   - String interpolation `${}`
+   - Numbers, strings, identifiers
+   - Comments `//` and `/* */`
+   - STL-based token containers and efficient string handling
 
-2. **Robust Parser in C** (2 months)
-    - Recursive descent parser
-    - Arithmetic expressions with priorities
-    - Variable declarations (`let`/`const`)
-    - Function definitions with `func`
-    - Basic types: `i32`, `f64`, `string`, `bool`
-    - AST generation and manipulation
+2. **Robust Parser in C++** (2 months)
+   - Recursive descent parser with C++ classes
+   - Arithmetic expressions with operator precedence
+   - Variable declarations (`let`/`const`)
+   - Function definitions with `func`
+   - Basic types: `i32`, `f64`, `string`, `bool`
+   - Smart pointer-based AST generation
 
-3. **Code Generator in C** (2-3 months)
-    - AST to native machine code
-    - Variables and constants in memory
-    - Function calls and stack management
-    - Arithmetic operations
-    - Basic I/O operations
-    - Initial WebAssembly target
+3. **Code Generator in C++** (2-3 months)
+   - Template-based AST to native machine code
+   - RAII-managed variables and constants
+   - Function calls and stack management
+   - Arithmetic operations
+   - Basic I/O operations
+   - Initial WebAssembly target
 
 #### Phase 1 Deliverables:
 
@@ -398,7 +402,7 @@ func add_numbers(x: i32, y: i32) -> i32 {
 #### New Features:
 
 - Custom types: `type User = { full_name: string, user_age: i32 }`
-- Arrays: `i32[]`, `User[]` with dynamic memory management
+- Arrays: `i32[]`, `User[]` with STL-based dynamic memory management
 - Optionals: `?string` with null safety
 - Conditions: classic `if/else` with proper branching
 - Loops: `for`, `while`, ranges `0..10`
@@ -440,13 +444,13 @@ func main() -> i32 {
 
 #### New Features:
 
-- `Result<T, E>` types with efficient memory layout
+- `Result<T, E>` types with efficient C++ template implementation
 - `throw` and `catch` (revolutionary approach - not try/catch!)
 - Dual propagation: `?` AND `try...else`
 - Ultra-clear error messages with suggestions
 - Real-time compiler advice system
 - Basic race condition detection
-- Memory leak detection
+- RAII-based automatic resource management
 
 #### Phase 3 Deliverables:
 
@@ -483,7 +487,7 @@ func handle_api_errors() {
 
 - Complete WebAssembly compilation pipeline
 - `@target(wasm, native, hybrid)` system with conditional compilation
-- `async`/`await` with efficient coroutine implementation
+- `async`/`await` with efficient C++ coroutine implementation
 - Complete cross-compilation for all platforms
 - Adaptive standard library per target
 - Performance optimizations for each target
@@ -516,8 +520,8 @@ async func load_user_data() -> Result<User[], Error> {
 
 #### New Features:
 
-- `@hotpatch` for development with `dlopen`/`dlsym`
-- Simple but strict generics `<T>`
+- `@hotpatch` for development with dynamic loading
+- Template-based generics `<T>` leveraging C++ templates
 - Advanced problem detection (race conditions, memory leaks, security)
 - Intelligent compiler suggestions system
 - Destructuring: `{ full_name, user_age } = user_data`
@@ -566,12 +570,12 @@ func calculate_product_price<T>(product_item: T, price_processor: (T) -> f64) ->
 - ✅ Variables `let`/`const` with strict types
 - ✅ Functions with parameters and return type `func name() -> type`
 - ✅ String interpolation `${variable}`
-- ✅ Basic memory management working
+- ✅ RAII-based memory management working
 
 ### Medium Term (18 months)
 
 - ✅ Complex types: `type User = { ... }`
-- ✅ Arrays: `User[]` with dynamic allocation
+- ✅ Arrays: `User[]` with STL-based dynamic allocation
 - ✅ Error handling: `Result<T, E>`, `throw`, `catch`
 - ✅ Dual propagation: `?` and `try...else`
 - ✅ Revolutionary error messages
@@ -596,69 +600,71 @@ func calculate_product_price<T>(product_item: T, price_processor: (T) -> f64) ->
 
 ### Major Technical Challenges
 
-- **Multi-target compilation complexity** (WebAssembly + native from C)
+- **Multi-target compilation complexity** (WebAssembly + native from C++)
 - **Compiler performance** (incremental AND fast compilation)
-- **Automatic but efficient ownership** memory management in C
-- **Secure hot-patching** with `dlopen` (dev only)
+- **RAII-based automatic ownership** memory management
+- **Secure hot-patching** with dynamic loading (dev only)
 - **Intelligent error messages** without AI dependency
 - **Robust cross-compilation** pipeline
 
-### C-Specific Challenges
+### C++-Specific Advantages
 
-- **Memory management complexity** - all manual, but enables total control
-- **Longer development time** - more verbose than higher-level languages
-- **Debugging complexity** - requires excellent tooling and practices
-- **Security concerns** - buffer overflows, memory leaks (but total control)
+- **RAII automatic cleanup** - smart pointers eliminate manual memory management
+- **STL power** - efficient containers, algorithms, and utilities built-in
+- **Template system** - compile-time generics for zero-cost abstractions
+- **OOP architecture** - clean modular design with classes and inheritance
+- **Exception handling** - structured error handling in compiler itself
+- **Modern language features** - lambdas, auto, range-based loops
 
 ### Ecosystem Challenges
 
 - **Fierce competition**: Rust/Go/Zig rapidly growing
 - **Development time**: 3-5 years minimum for production
 - **Community building** and package ecosystem
-- **Concurrent learning**: C mastery + compiler theory
+- **Concurrent learning**: Modern C++ mastery + compiler theory
 
 ### Mitigation Strategies
 
 - **Start small** with key innovations (error messages, hot-patching)
-- **Immediate open source** to attract C developers and contributors
+- **Immediate open source** to attract C++ developers and contributors
 - **Focus on differentiators**: predictive errors + hot-patching + simplicity
 - **Exemplary documentation** from Hello World
-- **Progressive learning**: grow C expertise with the project
+- **Progressive learning**: grow C++ expertise with the project
 - **Incremental phases**: each phase usable and demonstrable
-- **Memory safety tools**: Valgrind, AddressSanitizer, custom debug modes
-- **Extensive testing**: unit tests, integration tests, fuzzing
+- **Modern C++ safety**: smart pointers, RAII, const correctness
+- **Extensive testing**: unit tests, integration tests, fuzzing with C++ frameworks
 
 ---
 
 ## 🚀 Immediate Next Steps
 
-### Week 1-2: C Environment Setup
+### Week 1-2: C++ Environment Setup
 
-1. **C development environment**: GCC, Clang, Make/CMake, debugging tools
-2. **GitHub repo**: project structure, C build system, README, this roadmap
+1. **C++ development environment**: GCC 11+, Clang 12+, CMake, debugging tools
+2. **GitHub repo**: project structure, CMake build system, README, this roadmap
 3. **Final name confirmation**: "Zen" or alternative
-4. **C compiler study**: TinyCC source, Lua implementation patterns
+4. **Modern C++ compiler study**: LLVM architecture, template-based design patterns
 
-### Month 1: First Lexer in C
+### Month 1: First Lexer in C++
 
 1. **Basic token lexer**: `func`, `let`, `const`, `->`, `{`, `}`
 2. **String processing**: tokenize `${variable}` interpolation
 3. **Comment handling**: `//` and `/* */`
-4. **Memory management**: token allocation and cleanup
-5. **Testing framework**: unit tests for lexer
+4. **STL-based management**: efficient token containers
+5. **Testing framework**: Google Test or similar C++ framework
 
-### Month 2-3: Parser and AST in C
+### Month 2-3: Parser and AST in C++
 
 1. **Expression parser**: arithmetic with operator precedence
 2. **Declarations**: `let variable_name: type = value`
 3. **Functions**: `func function_name(params) -> return_type { }`
-4. **AST structures**: efficient memory layout in C
-5. **Memory management**: AST allocation and cleanup
+4. **Smart pointer AST**: RAII-managed AST nodes
+5. **Template-based processing**: efficient AST manipulation
 
 ### Month 4-6: First Code Generator
 
-1. **Code generation**: AST to native machine code
-2. **Variable management**: stack and heap allocation
+1. **Code generation**: Template-based AST to native machine code
+2. **Variable management**: automatic stack and heap allocation
 3. **Function management**: calls, returns, stack frames
 4. **First complete program**: functional calculator
 5. **Basic WebAssembly**: simple target for web deployment
@@ -676,12 +682,13 @@ func calculate_product_price<T>(product_item: T, price_processor: (T) -> f64) ->
 - **Targets** supported (native platforms, WebAssembly)
 - **Memory efficiency** (compiler and generated code)
 
-### Code Quality Metrics (C-specific)
+### Code Quality Metrics (C++-specific)
 
-- **Memory leaks**: Zero tolerance with Valgrind verification
+- **Memory safety**: RAII compliance and smart pointer usage
 - **Code coverage**: >90% test coverage
-- **Static analysis**: Clean Clang Static Analyzer results
+- **Static analysis**: Clean Clang Static Analyzer and clang-tidy results
 - **Documentation**: Complete API docs and examples
+- **Performance**: Zero memory leaks verified by Valgrind
 
 ### Community Metrics
 
@@ -694,32 +701,32 @@ func calculate_product_price<T>(product_item: T, price_processor: (T) -> f64) ->
 
 ---
 
-## 💡 Why C is Perfect for Zen
+## 💡 Why C++ is Perfect for Zen
 
 ### Technical Advantages
 
-- **Total Control**: Every byte of memory, every CPU instruction
+- **RAII Power**: Automatic resource management without garbage collection
+- **Template System**: Compile-time generics for zero-cost abstractions
+- **STL Excellence**: Proven containers, algorithms, and utilities
 - **Zero Runtime**: No hidden performance costs or surprises
 - **Universal Compilation**: GCC/Clang target everything (x86, ARM, WASM, etc.)
-- **Predictable Performance**: What you write is what you get
-- **Debugging Excellence**: GDB, Valgrind, AddressSanitizer work perfectly
-- **Minimal Dependencies**: Just standard C library
+- **Modern Features**: C++26 provides cutting-edge language features
 
 ### Strategic Advantages
 
-- **Proven Track Record**: All successful system languages use C for their compilers
-- **Learning Value**: Understanding how everything works at the lowest level
-- **Performance Ceiling**: Absolute maximum performance possible
+- **Proven Track Record**: LLVM, GCC backend, many successful compilers use C++
+- **Learning Value**: Understanding modern systems programming
+- **Performance Ceiling**: Absolute maximum performance with convenience
 - **Portability**: Runs on everything from embedded to supercomputers
-- **Long-term Stability**: C will outlive all current trendy languages
+- **Long-term Stability**: C++ continues evolving while maintaining compatibility
 
 ### Innovation Enablement
 
-- **Custom Memory Management**: Perfect for Zen's automatic ownership
-- **Hot-patching**: `dlopen`/`dlsym` for development features
-- **Multi-target**: Direct control over code generation for each platform
-- **Error System**: Complete control over error propagation and messages
-- **Compiler Intelligence**: Build sophisticated analysis without frameworks
+- **Template-based Code Generation**: Efficient multi-target compilation
+- **RAII-based Ownership**: Perfect for Zen's automatic memory management
+- **Hot-patching**: Dynamic loading with proper C++ integration
+- **Error System**: Template-based Result types and structured exceptions
+- **Compiler Intelligence**: OOP design for sophisticated analysis systems
 
 ---
 
@@ -778,19 +785,19 @@ func calculate_product_price<T>(product_item: T, price_processor: (T) -> f64) ->
 ```
 [Zen Source Code (.zen)]
         ↓
-[Lexical Analysis (lexer)]
-    → Tokens: func, let, const, ->, @target, etc.
+[Lexical Analysis (C++ Lexer)]
+    → STL containers: tokens, string tables
         ↓
-[Syntax Analysis (parser)]
-    → Abstract Syntax Tree (AST)
+[Syntax Analysis (C++ Parser)]
+    → Smart pointer-based Abstract Syntax Tree (AST)
         ↓
-[Semantic Analysis (analyzer)]
-    → Type checking, scope resolution, error detection
+[Semantic Analysis (C++ Analyzer)]
+    → Template-based type checking, scope resolution, error detection
         ↓
-[Optimization (optimizer)]
+[Optimization (C++ Optimizer)]
     → Dead code elimination, constant folding, inlining
         ↓
-[Code Generation (codegen)]
+[Code Generation (Template-based Codegen)]
     ↙                    ↘
 [Native Code]        [WebAssembly]
 (x86, ARM, etc.)     (.wasm files)
@@ -798,18 +805,33 @@ func calculate_product_price<T>(product_item: T, price_processor: (T) -> f64) ->
 
 ### Memory Management Strategy
 
-```c
-// Custom memory pools for different compiler phases
-typedef struct {
-    TokenPool*   tokens;      // Lexer token allocation
-    ASTPool*     ast_nodes;   // Parser AST node allocation  
-    SymbolPool*  symbols;     // Analyzer symbol table
-    CodePool*    generated;   // Codegen output buffers
-} CompilerMemory;
+```cpp
+// RAII-based compiler architecture
+class CompilerContext {
+private:
+    std::unique_ptr<TokenStream> tokens;
+    std::unique_ptr<ASTRoot> ast;
+    std::shared_ptr<SymbolTable> symbols;
+    std::vector<std::unique_ptr<CodeGenerator>> generators;
 
-// Zero-copy string handling where possible
-// Reference counting for shared AST nodes
-// Arena allocation for compilation phases
+public:
+    // Automatic cleanup via RAII
+    ~CompilerContext() = default;
+    
+    // Move semantics for efficiency
+    CompilerContext(CompilerContext&&) = default;
+};
+
+// Template-based AST nodes
+template<typename T>
+class ASTNode {
+    std::unique_ptr<T> data;
+    std::vector<std::shared_ptr<ASTNode>> children;
+    
+public:
+    // Automatic memory management
+    // Smart pointers handle all cleanup
+};
 ```
 
 ---
@@ -827,19 +849,19 @@ typedef struct {
 
 ### Runtime Performance Goals
 
-| Benchmark            | Zen  | C    | Rust | Go   | Python |
-|----------------------|------|------|------|------|--------| 
-| **Fibonacci (n=40)** | 1.0x | 1.0x | 1.0x | 1.2x | 50x    |
-| **JSON Parsing**     | 1.0x | 1.0x | 1.0x | 1.3x | 10x    |
-| **Web Server**       | 1.0x | 1.0x | 1.0x | 1.1x | 20x    |
-| **Math Heavy**       | 1.0x | 1.0x | 1.0x | 1.2x | 100x   |
+| Benchmark            | Zen  | C++  | C    | Rust | Go   | Python |
+|----------------------|------|------|------|------|------|--------| 
+| **Fibonacci (n=40)** | 1.0x | 1.0x | 1.0x | 1.0x | 1.2x | 50x    |
+| **JSON Parsing**     | 1.0x | 1.0x | 1.0x | 1.0x | 1.3x | 10x    |
+| **Web Server**       | 1.0x | 1.0x | 1.0x | 1.0x | 1.1x | 20x    |
+| **Math Heavy**       | 1.0x | 1.0x | 1.0x | 1.0x | 1.2x | 100x   |
 
 ### Memory Efficiency Goals
 
 - **Binary Size**: 50% smaller than equivalent Rust
-- **Memory Usage**: Comparable to C, 10x less than Python
+- **Memory Usage**: Comparable to C++, 10x less than Python
 - **Startup Time**: < 1ms for CLI tools
-- **Memory Leaks**: Zero tolerance (Valgrind verified)
+- **Memory Leaks**: Zero tolerance (RAII + Valgrind verified)
 
 ---
 
@@ -1054,9 +1076,8 @@ slow. Zen combines the best of all worlds with revolutionary innovations like pr
 A: Zen is 10x easier to learn (no lifetime annotations), compiles faster, has better error messages, and includes
 development hot-patching. You get Rust's performance without the complexity.
 
-**Q: Why C for the compiler instead of Rust or modern languages?**
-A: Total control. C gives us zero runtime overhead, maximum performance, universal portability, and the ability to
-implement crazy innovations like hot-patching. Every legendary compiler (GCC, Clang) is written in C.
+**Q: Why C++ for the compiler instead of Rust or other modern languages?**
+A: C++ provides the perfect balance: total control like C, but with modern features like RAII, templates, and STL. We get zero runtime overhead, maximum performance, universal portability, plus automatic memory management and sophisticated abstractions for implementing innovations.
 
 **Q: Is this just another systems language?**
 A: No! Zen targets everything - web (WebAssembly), desktop, mobile, backend. It's a universal language that's both
@@ -1065,20 +1086,18 @@ beginner-friendly and expert-powerful.
 ### **Technical Questions**
 
 **Q: How does automatic ownership work without garbage collection?**
-A: Zen uses compile-time analysis to determine object lifetimes, combined with reference counting for complex cases. The
+A: Zen uses compile-time analysis to determine object lifetimes, combined with RAII patterns inspired by C++. The
 compiler inserts cleanup code automatically - developers never think about memory management.
 
 **Q: How does hot-patching work securely?**
-A: Hot-patching only works in development mode with `@hotpatch` annotation. It uses `dlopen`/`dlsym` to load new
+A: Hot-patching only works in development mode with `@hotpatch` annotation. It uses dynamic loading to replace
 function implementations. In production builds, `@hotpatch` is completely ignored.
 
-**Q: Can I use existing C libraries?**
-A: Yes! Since the compiler is written in C, C interop is native and seamless. We'll also provide binding generators for
-popular libraries.
+**Q: Can I use existing C++ libraries?**
+A: Yes! Since the compiler is written in C++, C++ interop is native and seamless. C libraries work via extern "C". We'll also provide binding generators for popular libraries.
 
-**Q: How do you ensure memory safety in C?**
-A: Extensive testing with Valgrind, AddressSanitizer, and custom memory pools. The compiler architecture uses arena
-allocation and clear ownership patterns.
+**Q: How do you ensure memory safety in C++?**
+A: Modern C++ with RAII, smart pointers, and extensive testing with Valgrind, AddressSanitizer. The compiler architecture uses automatic memory management and clear ownership patterns.
 
 ### **Adoption Questions**
 
@@ -1117,24 +1136,24 @@ standards.
 
 #### v0.1 Alpha - Foundation
 
-- ✅ Basic lexer and parser
+- ✅ STL-based lexer and parser
 - ✅ Arithmetic expressions
 - ✅ Variables (`let`/`const`) with type checking
 - ✅ Functions with parameters and return types
 - ✅ String interpolation
-- ✅ Memory management basics
+- ✅ RAII-based memory management
 
 #### v0.2 Alpha - Complex Types
 
 - 📋 Custom types (`type User = { ... }`)
-- 📋 Arrays with dynamic allocation
+- 📋 Arrays with STL containers
 - 📋 Optional types (`?T`)
 - 📋 Control flow (`if`/`else`, `for`, `while`)
 - 📋 Pattern matching basics
 
 #### v0.3 Beta - Error Handling Revolution
 
-- 📋 `Result<T, E>` types
+- 📋 Template-based `Result<T, E>` types
 - 📋 `throw`/`catch` expressions (not try/catch!)
 - 📋 Dual propagation (`?` and `try...else`)
 - 📋 Intelligent error messages with suggestions
@@ -1149,7 +1168,7 @@ standards.
 
 #### v0.5 RC - Advanced Features
 
-- 📋 `async`/`await` with coroutines
+- 📋 `async`/`await` with C++ coroutines
 - 📋 `@hotpatch` development mode
 - 📋 Complete standard library
 - 📋 Package manager (`zen add`, `zen publish`)
@@ -1170,8 +1189,8 @@ standards.
 **Every Commit Must Pass:**
 
 - ✅ All unit tests (>95% coverage)
-- ✅ Memory leak check (Valgrind clean)
-- ✅ Static analysis (Clang Static Analyzer)
+- ✅ RAII compliance check (no manual memory management)
+- ✅ Static analysis (Clang Static Analyzer + clang-tidy)
 - ✅ Integration tests
 - ✅ Performance regression tests
 
@@ -1185,11 +1204,11 @@ standards.
 
 ### Testing Tools
 
-- **Unit Tests**: Custom C test framework (lightweight)
-- **Memory**: Valgrind, AddressSanitizer, custom pools
+- **Unit Tests**: Google Test framework
+- **Memory**: Valgrind, AddressSanitizer, smart pointer verification
 - **Performance**: Custom benchmarking suite
 - **Fuzzing**: AFL, custom grammar-based fuzzer
-- **Static Analysis**: Clang Static Analyzer, custom lints
+- **Static Analysis**: Clang Static Analyzer, clang-tidy, custom lints
 
 ---
 
@@ -1204,34 +1223,42 @@ standards.
    cd zen-lang
    
    # Install dependencies
-   sudo apt install gcc clang valgrind cmake
+   sudo apt install gcc g++ clang clang-tidy valgrind cmake ninja-build
    
    # Build compiler
-   make build
+   mkdir build && cd build
+   cmake .. -GNinja
+   ninja
    
    # Run tests
-   make test
+   ninja test
    ```
 
 2. **Code Standards**
-    - **C99 standard** - no GNU extensions
-    - **4 spaces** for indentation (no tabs)
-    - **80 character** line limits
-    - **Descriptive names** - `parse_function_declaration` not `parse_func`
-    - **Memory safety** - every malloc has corresponding free
-    - **Error handling** - all functions return error codes
+   - **C++26 standard** - modern C++ features encouraged
+   - **4 spaces** for indentation (no tabs)
+   - **80 character** line limits
+   - **Descriptive names** - `parse_function_declaration` not `parse_func`
+   - **RAII compliance** - no manual memory management
+   - **const correctness** - use const wherever possible
 
 3. **Memory Management Rules**
-   ```c
-   // Use arena allocation for compilation phases
-   Arena* arena = arena_create();
-   Token* tokens = arena_alloc(arena, sizeof(Token) * count);
-   // Arena automatically freed at end of phase
+   ```cpp
+   // Use smart pointers for automatic cleanup
+   auto tokens = std::make_unique<std::vector<Token>>();
+   auto ast = std::make_shared<ASTNode>(NODE_FUNCTION);
    
-   // Use reference counting for shared data
-   ASTNode* node = ast_node_create(NODE_FUNCTION);
-   ast_node_ref(node);  // Increment reference
-   ast_node_unref(node); // Decrement and free if zero
+   // Use STL containers for collections
+   std::vector<std::unique_ptr<Statement>> statements;
+   std::unordered_map<std::string, Symbol> symbol_table;
+   
+   // RAII for resources
+   class FileProcessor {
+       std::ifstream file_;
+   public:
+       FileProcessor(const std::string& path) : file_(path) {}
+       // Automatic cleanup via destructor
+   };
    ```
 
 ### Contribution Process
@@ -1240,7 +1267,7 @@ standards.
 2. **Fork Repository** - Work in your own fork
 3. **Create Branch** - `feature/hot-patching` or `fix/lexer-bug`
 4. **Code + Tests** - Include comprehensive tests
-5. **Memory Check** - Valgrind clean required
+5. **RAII Check** - Ensure no manual memory management
 6. **Pull Request** - Detailed description and tests
 7. **Code Review** - At least 2 maintainer approvals
 8. **Merge** - Squash commits for clean history
@@ -1249,17 +1276,17 @@ standards.
 
 **High Priority:**
 
-- Lexer optimizations and error recovery
-- Parser robustness and better error messages
-- WebAssembly code generation
-- Standard library implementation
+- STL-based lexer optimizations and error recovery
+- Template-based parser robustness and better error messages
+- WebAssembly code generation with C++ backend
+- Standard library implementation using modern C++
 
 **Medium Priority:**
 
 - VS Code extension development
 - Documentation and examples
 - Package manager design
-- Cross-platform testing
+- Cross-platform testing with CMake
 
 **Low Priority:**
 
@@ -1269,8 +1296,9 @@ standards.
 
 ### Coding Philosophy
 
-- **Simplicity over cleverness** - clear code beats clever code
-- **Performance matters** - but correctness first
-- **Memory safety** - zero leaks, zero corruption
-- **Testability** - every feature must be testable
-- **Documentation** - code should be self-documenting
+- **Modern C++ best practices** - RAII, smart pointers, const correctness
+- **Performance with safety** - zero-cost abstractions
+- **Template-based design** - compile-time polymorphism
+- **STL utilization** - leverage proven containers and algorithms
+- **Exception safety** - strong exception guarantees
+- **Testability** - every feature must be testable with Google Test
