@@ -294,17 +294,18 @@ Hot-patching enabled for development mode
 
 ### Chosen Technologies
 
-- **Compiler Language**: **C++26** (total control + modern features + maximum performance + universal portability)
+- **Compiler Language**: **Rust** (memory safety + modern features + excellent ecosystem + zero-cost abstractions)
    - **100% from scratch** - complete control over every aspect
-   - **Universal compilation** via GCC/Clang to native + WebAssembly
-   - **Zero runtime overhead** - pure machine code generation
-   - **Modern C++** features: smart pointers, STL containers, RAII, templates
-   - **Battle-tested** - LLVM, GCC are largely C++, proven for compiler development
-   - **Maximum portability** - runs everywhere, compiles to everything
-   - **Advanced memory control** - RAII + smart pointers for automatic cleanup
-   - **Perfect for innovations** - OOP + templates for clean architecture
-   - **STL power** - vectors, maps, strings for efficient data structures
-- **Architecture**: Compiler **completely from scratch** (no LLVM, no external frameworks)
+   - **Universal compilation** via LLVM to native + WebAssembly
+   - **Zero runtime overhead** - efficient machine code generation
+   - **Memory safety** - impossible to have memory bugs in the compiler itself
+   - **Rich ecosystem** - `clap`, `serde`, `syn`, `quote` for compiler development
+   - **Proven for compilers** - `rustc`, `swc`, many successful compilers use Rust
+   - **Excellent error handling** - `Result<T, E>` matches our language design
+   - **Pattern matching** - perfect for AST manipulation and parsing
+   - **Cargo ecosystem** - seamless dependency management and tooling
+   - **Modern language** - ownership system teaches better programming patterns
+- **Architecture**: Compiler **completely from scratch** (custom LLVM backend)
 - **Approach**: **Open source from day one**
 
 ### Development Tools
@@ -317,38 +318,38 @@ Hot-patching enabled for development mode
 
 ### Interoperability
 
-- **C++ Integration**: Native since compiler is in C++
-- **C Integration**: Excellent via extern "C"
+- **Rust Integration**: Native since compiler is in Rust
+- **C Integration**: Excellent via FFI and bindgen
 - **Other languages**: To be evaluated based on future community needs
 
 ---
 
 ## 📅 Detailed Timeline and Phases
 
-### Phase 0: C++ Mastery & Architecture (1-2 months)
+### Phase 0: Rust Mastery & Architecture (1-2 months)
 
-**Objective**: Master modern C++ for compiler development and design architecture
+**Objective**: Master Rust for compiler development and design architecture
 
 #### Learning Steps:
 
-1. **Modern C++ techniques** (2 weeks)
-   - Smart pointers (unique_ptr, shared_ptr, weak_ptr)
-   - RAII patterns and resource management
-   - STL containers and algorithms
-   - Templates and metaprogramming
-   - Build systems (CMake, Ninja)
+1. **Modern Rust techniques** (2 weeks)
+   - Ownership, borrowing, and lifetimes
+   - Pattern matching and enums for AST
+   - `Result<T, E>` and error handling patterns
+   - Trait system and generics
+   - Cargo and crate ecosystem
 
-2. **Compiler theory with C++** (2 weeks)
-   - Study "Crafting Interpreters" with C++ adaptation
-   - Analyze LLVM C++ architecture patterns
-   - Study modern C++ compiler design
-   - Lexing/Parsing with modern C++ patterns
+2. **Compiler theory with Rust** (2 weeks)
+   - Study compiler crates: `syn`, `quote`, `proc-macro2`
+   - Analyze `rustc` architecture patterns
+   - Study modern Rust compiler design
+   - Lexing/Parsing with Rust patterns (nom, pest, or custom)
 
 3. **Architecture design** (2-4 weeks)
-   - Complete OOP module structure
-   - RAII-based memory management strategy
-   - Template-based multi-target compilation
-   - Exception-based error handling system design
+   - Enum-based AST structure design
+   - Ownership-based memory management strategy
+   - Trait-based multi-target compilation
+   - `Result<T, E>` based error handling throughout
 
 ### Phase 1: Foundations (3-6 months)
 
@@ -356,24 +357,24 @@ Hot-patching enabled for development mode
 
 #### Technical Steps:
 
-1. **Complete Lexer in C++** (1 month)
+1. **Complete Lexer in Rust** (1 month)
    - All tokens: `func`, `let`, `const`, `->`, `@target`, etc.
    - String interpolation `${}`
    - Numbers, strings, identifiers
    - Comments `//` and `/* */`
-   - STL-based token containers and efficient string handling
+   - Custom lexer with `Vec<Token>` and efficient string handling
 
-2. **Robust Parser in C++** (2 months)
-   - Recursive descent parser with C++ classes
+2. **Robust Parser in Rust** (2 months)
+   - Recursive descent parser with Rust enums
    - Arithmetic expressions with operator precedence
    - Variable declarations (`let`/`const`)
    - Function definitions with `func`
    - Basic types: `i32`, `f64`, `string`, `bool`
-   - Smart pointer-based AST generation
+   - `Box<T>` based AST for recursive structures
 
-3. **Code Generator in C++** (2-3 months)
-   - Template-based AST to native machine code
-   - RAII-managed variables and constants
+3. **Code Generator in Rust** (2-3 months)
+   - LLVM backend using `inkwell` crate
+   - Ownership-managed variables and constants
    - Function calls and stack management
    - Arithmetic operations
    - Basic I/O operations
@@ -402,7 +403,7 @@ func add_numbers(x: i32, y: i32) -> i32 {
 #### New Features:
 
 - Custom types: `type User = { full_name: string, user_age: i32 }`
-- Arrays: `i32[]`, `User[]` with STL-based dynamic memory management
+- Arrays: `i32[]`, `User[]` with Vec-based dynamic memory management
 - Optionals: `?string` with null safety
 - Conditions: classic `if/else` with proper branching
 - Loops: `for`, `while`, ranges `0..10`
@@ -444,13 +445,13 @@ func main() -> i32 {
 
 #### New Features:
 
-- `Result<T, E>` types with efficient C++ template implementation
+- `Result<T, E>` types leveraging Rust's native Result
 - `throw` and `catch` (revolutionary approach - not try/catch!)
 - Dual propagation: `?` AND `try...else`
 - Ultra-clear error messages with suggestions
 - Real-time compiler advice system
 - Basic race condition detection
-- RAII-based automatic resource management
+- Ownership-based automatic resource management
 
 #### Phase 3 Deliverables:
 
@@ -485,9 +486,9 @@ func handle_api_errors() {
 
 #### New Features:
 
-- Complete WebAssembly compilation pipeline
+- Complete WebAssembly compilation pipeline via LLVM
 - `@target(wasm, native, hybrid)` system with conditional compilation
-- `async`/`await` with efficient C++ coroutine implementation
+- `async`/`await` with efficient async runtime
 - Complete cross-compilation for all platforms
 - Adaptive standard library per target
 - Performance optimizations for each target
@@ -521,7 +522,7 @@ async func load_user_data() -> Result<User[], Error> {
 #### New Features:
 
 - `@hotpatch` for development with dynamic loading
-- Template-based generics `<T>` leveraging C++ templates
+- Generics `<T>` leveraging Rust's trait system
 - Advanced problem detection (race conditions, memory leaks, security)
 - Intelligent compiler suggestions system
 - Destructuring: `{ full_name, user_age } = user_data`
@@ -570,12 +571,12 @@ func calculate_product_price<T>(product_item: T, price_processor: (T) -> f64) ->
 - ✅ Variables `let`/`const` with strict types
 - ✅ Functions with parameters and return type `func name() -> type`
 - ✅ String interpolation `${variable}`
-- ✅ RAII-based memory management working
+- ✅ Ownership-based memory management working
 
 ### Medium Term (18 months)
 
 - ✅ Complex types: `type User = { ... }`
-- ✅ Arrays: `User[]` with STL-based dynamic allocation
+- ✅ Arrays: `User[]` with Vec-based dynamic allocation
 - ✅ Error handling: `Result<T, E>`, `throw`, `catch`
 - ✅ Dual propagation: `?` and `try...else`
 - ✅ Revolutionary error messages
@@ -600,70 +601,70 @@ func calculate_product_price<T>(product_item: T, price_processor: (T) -> f64) ->
 
 ### Major Technical Challenges
 
-- **Multi-target compilation complexity** (WebAssembly + native from C++)
+- **Multi-target compilation complexity** (WebAssembly + native via LLVM)
 - **Compiler performance** (incremental AND fast compilation)
-- **RAII-based automatic ownership** memory management
+- **Ownership-based automatic memory management** design
 - **Secure hot-patching** with dynamic loading (dev only)
 - **Intelligent error messages** without AI dependency
 - **Robust cross-compilation** pipeline
 
-### C++-Specific Advantages
+### Rust-Specific Advantages
 
-- **RAII automatic cleanup** - smart pointers eliminate manual memory management
-- **STL power** - efficient containers, algorithms, and utilities built-in
-- **Template system** - compile-time generics for zero-cost abstractions
-- **OOP architecture** - clean modular design with classes and inheritance
-- **Exception handling** - structured error handling in compiler itself
-- **Modern language features** - lambdas, auto, range-based loops
+- **Memory safety by default** - impossible to have memory bugs in compiler
+- **Rich ecosystem** - excellent crates for compiler development
+- **Pattern matching** - perfect for AST manipulation and parsing
+- **Ownership system** - natural fit for resource management
+- **`Result<T, E>`** - built-in error handling matches our language design
+- **Modern tooling** - cargo, rustfmt, clippy for excellent development experience
 
 ### Ecosystem Challenges
 
 - **Fierce competition**: Rust/Go/Zig rapidly growing
 - **Development time**: 3-5 years minimum for production
 - **Community building** and package ecosystem
-- **Concurrent learning**: Modern C++ mastery + compiler theory
+- **Learning curve**: Rust ownership system mastery
 
 ### Mitigation Strategies
 
 - **Start small** with key innovations (error messages, hot-patching)
-- **Immediate open source** to attract C++ developers and contributors
+- **Immediate open source** to attract Rust developers and contributors
 - **Focus on differentiators**: predictive errors + hot-patching + simplicity
 - **Exemplary documentation** from Hello World
-- **Progressive learning**: grow C++ expertise with the project
+- **Progressive learning**: grow Rust expertise with the project
 - **Incremental phases**: each phase usable and demonstrable
-- **Modern C++ safety**: smart pointers, RAII, const correctness
-- **Extensive testing**: unit tests, integration tests, fuzzing with C++ frameworks
+- **Rust safety**: leverage borrow checker and ownership system
+- **Extensive testing**: unit tests, integration tests, property-based testing with Rust frameworks
 
 ---
 
 ## 🚀 Immediate Next Steps
 
-### Week 1-2: C++ Environment Setup
+### Week 1-2: Rust Environment Setup
 
-1. **C++ development environment**: GCC 11+, Clang 12+, CMake, debugging tools
-2. **GitHub repo**: project structure, CMake build system, README, this roadmap
+1. **Rust development environment**: Latest stable Rust, Cargo, rustup, debugging tools
+2. **GitHub repo**: project structure, Cargo.toml, README, this roadmap
 3. **Final name confirmation**: "Zen" or alternative
-4. **Modern C++ compiler study**: LLVM architecture, template-based design patterns
+4. **Modern Rust compiler study**: rustc architecture, LLVM integration patterns
 
-### Month 1: First Lexer in C++
+### Month 1: First Lexer in Rust
 
 1. **Basic token lexer**: `func`, `let`, `const`, `->`, `{`, `}`
 2. **String processing**: tokenize `${variable}` interpolation
 3. **Comment handling**: `//` and `/* */`
-4. **STL-based management**: efficient token containers
-5. **Testing framework**: Google Test or similar C++ framework
+4. **Rust-based management**: efficient token Vec and String handling
+5. **Testing framework**: Built-in Rust testing with `#[cfg(test)]`
 
-### Month 2-3: Parser and AST in C++
+### Month 2-3: Parser and AST in Rust
 
 1. **Expression parser**: arithmetic with operator precedence
 2. **Declarations**: `let variable_name: type = value`
 3. **Functions**: `func function_name(params) -> return_type { }`
-4. **Smart pointer AST**: RAII-managed AST nodes
-5. **Template-based processing**: efficient AST manipulation
+4. **Enum-based AST**: Rust enums for type-safe AST nodes
+5. **Pattern matching**: efficient AST manipulation with match expressions
 
 ### Month 4-6: First Code Generator
 
-1. **Code generation**: Template-based AST to native machine code
+1. **LLVM backend**: Using `inkwell` crate for LLVM integration
 2. **Variable management**: automatic stack and heap allocation
 3. **Function management**: calls, returns, stack frames
 4. **First complete program**: functional calculator
@@ -682,18 +683,18 @@ func calculate_product_price<T>(product_item: T, price_processor: (T) -> f64) ->
 - **Targets** supported (native platforms, WebAssembly)
 - **Memory efficiency** (compiler and generated code)
 
-### Code Quality Metrics (C++-specific)
+### Code Quality Metrics (Rust-specific)
 
-- **Memory safety**: RAII compliance and smart pointer usage
-- **Code coverage**: >90% test coverage
-- **Static analysis**: Clean Clang Static Analyzer and clang-tidy results
-- **Documentation**: Complete API docs and examples
-- **Performance**: Zero memory leaks verified by Valgrind
+- **Memory safety**: Zero `unsafe` blocks in core compiler
+- **Code coverage**: >90% test coverage with `cargo tarpaulin`
+- **Static analysis**: Clean `cargo clippy` results
+- **Documentation**: Complete docs with `cargo doc`
+- **Performance**: Zero memory leaks guaranteed by Rust ownership
 
 ### Community Metrics
 
 - **GitHub stars** and active contributors
-- **Packages** in ecosystem registry
+- **Crates** in ecosystem registry
 - **Adoption** by early users and projects
 - **Documentation** completeness and quality
 - **Issues** resolved vs open ratio
@@ -701,32 +702,32 @@ func calculate_product_price<T>(product_item: T, price_processor: (T) -> f64) ->
 
 ---
 
-## 💡 Why C++ is Perfect for Zen
+## 💡 Why Rust is Perfect for Zen
 
 ### Technical Advantages
 
-- **RAII Power**: Automatic resource management without garbage collection
-- **Template System**: Compile-time generics for zero-cost abstractions
-- **STL Excellence**: Proven containers, algorithms, and utilities
-- **Zero Runtime**: No hidden performance costs or surprises
-- **Universal Compilation**: GCC/Clang target everything (x86, ARM, WASM, etc.)
-- **Modern Features**: C++26 provides cutting-edge language features
+- **Memory Safety by Default**: No segfaults, buffer overflows, or memory leaks possible
+- **Pattern Matching**: Perfect for AST manipulation and compiler phases
+- **`Result<T, E>`**: Built-in error handling exactly matches our language design
+- **Zero-cost Abstractions**: High-level code compiles to efficient machine code
+- **LLVM Integration**: Excellent support via `inkwell` and other crates
+- **Modern Language**: Ownership system prevents entire classes of bugs
 
 ### Strategic Advantages
 
-- **Proven Track Record**: LLVM, GCC backend, many successful compilers use C++
-- **Learning Value**: Understanding modern systems programming
-- **Performance Ceiling**: Absolute maximum performance with convenience
-- **Portability**: Runs on everything from embedded to supercomputers
-- **Long-term Stability**: C++ continues evolving while maintaining compatibility
+- **Proven Track Record**: `rustc`, `swc`, and many successful compilers use Rust
+- **Learning Value**: Understanding systems programming and memory management
+- **Performance**: Comparable to C++ with much better safety guarantees
+- **Ecosystem**: Rich crate ecosystem with excellent compiler-related libraries
+- **Community**: Active, helpful community with excellent documentation
 
 ### Innovation Enablement
 
-- **Template-based Code Generation**: Efficient multi-target compilation
-- **RAII-based Ownership**: Perfect for Zen's automatic memory management
-- **Hot-patching**: Dynamic loading with proper C++ integration
-- **Error System**: Template-based Result types and structured exceptions
-- **Compiler Intelligence**: OOP design for sophisticated analysis systems
+- **Enum-based AST**: Type-safe AST representation with exhaustive pattern matching
+- **Ownership-based Resource Management**: Perfect model for Zen's automatic ownership
+- **Hot-patching**: Safe dynamic loading with proper type checking
+- **Error System**: Native `Result<T, E>` types for compiler and language
+- **Compiler Intelligence**: Safe parallelization and advanced analysis systems
 
 ---
 
@@ -785,19 +786,19 @@ func calculate_product_price<T>(product_item: T, price_processor: (T) -> f64) ->
 ```
 [Zen Source Code (.zen)]
         ↓
-[Lexical Analysis (C++ Lexer)]
-    → STL containers: tokens, string tables
+[Lexical Analysis (Rust Lexer)]
+    → Vec<Token> with efficient string handling
         ↓
-[Syntax Analysis (C++ Parser)]
-    → Smart pointer-based Abstract Syntax Tree (AST)
+[Syntax Analysis (Rust Parser)]
+    → Box<T>-based Abstract Syntax Tree (AST) with Rust enums
         ↓
-[Semantic Analysis (C++ Analyzer)]
-    → Template-based type checking, scope resolution, error detection
+[Semantic Analysis (Rust Analyzer)]
+    → Pattern matching-based type checking, scope resolution, error detection
         ↓
-[Optimization (C++ Optimizer)]
+[Optimization (Rust Optimizer)]
     → Dead code elimination, constant folding, inlining
         ↓
-[Code Generation (Template-based Codegen)]
+[Code Generation (LLVM via inkwell)]
     ↙                    ↘
 [Native Code]        [WebAssembly]
 (x86, ARM, etc.)     (.wasm files)
@@ -805,33 +806,55 @@ func calculate_product_price<T>(product_item: T, price_processor: (T) -> f64) ->
 
 ### Memory Management Strategy
 
-```cpp
-// RAII-based compiler architecture
-class CompilerContext {
-private:
-    std::unique_ptr<TokenStream> tokens;
-    std::unique_ptr<ASTRoot> ast;
-    std::shared_ptr<SymbolTable> symbols;
-    std::vector<std::unique_ptr<CodeGenerator>> generators;
+```rust
+// Ownership-based compiler architecture
+struct CompilerContext {
+    tokens: Vec<Token>,
+    ast: Box<ASTRoot>,
+    symbols: Rc<RefCell<SymbolTable>>,
+    generators: Vec<Box<dyn CodeGenerator>>,
+}
 
-public:
-    // Automatic cleanup via RAII
-    ~CompilerContext() = default;
-    
-    // Move semantics for efficiency
-    CompilerContext(CompilerContext&&) = default;
-};
+impl CompilerContext {
+    // Automatic cleanup via Drop trait
+    // No manual memory management needed
+}
 
-// Template-based AST nodes
-template<typename T>
-class ASTNode {
-    std::unique_ptr<T> data;
-    std::vector<std::shared_ptr<ASTNode>> children;
-    
-public:
-    // Automatic memory management
-    // Smart pointers handle all cleanup
-};
+// Enum-based AST nodes for type safety
+#[derive(Debug, Clone)]
+enum Expression {
+    Number(i64),
+    String(String),
+    BinaryOp {
+        left: Box<Expression>,
+        op: Operator,
+        right: Box<Expression>,
+    },
+    FunctionCall {
+        name: String,
+        args: Vec<Expression>,
+    },
+}
+
+// Pattern matching for AST processing
+impl Expression {
+    fn compile(&self, ctx: &mut CodegenContext) -> Result<Value, Error> {
+        match self {
+            Expression::Number(n) => ctx.create_int_constant(*n),
+            Expression::String(s) => ctx.create_string_constant(s),
+            Expression::BinaryOp { left, op, right } => {
+                let lval = left.compile(ctx)?;
+                let rval = right.compile(ctx)?;
+                ctx.create_binary_op(*op, lval, rval)
+            }
+            Expression::FunctionCall { name, args } => {
+                let arg_values: Result<Vec<_>, _> = 
+                    args.iter().map(|arg| arg.compile(ctx)).collect();
+                ctx.create_function_call(name, arg_values?)
+            }
+        }
+    }
+}
 ```
 
 ---
@@ -849,7 +872,7 @@ public:
 
 ### Runtime Performance Goals
 
-| Benchmark            | Zen  | C++  | C    | Rust | Go   | Python |
+| Benchmark            | Zen  | Rust | C    | C++  | Go   | Python |
 |----------------------|------|------|------|------|------|--------| 
 | **Fibonacci (n=40)** | 1.0x | 1.0x | 1.0x | 1.0x | 1.2x | 50x    |
 | **JSON Parsing**     | 1.0x | 1.0x | 1.0x | 1.0x | 1.3x | 10x    |
@@ -858,10 +881,10 @@ public:
 
 ### Memory Efficiency Goals
 
-- **Binary Size**: 50% smaller than equivalent Rust
-- **Memory Usage**: Comparable to C++, 10x less than Python
+- **Binary Size**: Comparable to Rust, smaller than Go
+- **Memory Usage**: Zero leaks guaranteed by Rust ownership
 - **Startup Time**: < 1ms for CLI tools
-- **Memory Leaks**: Zero tolerance (RAII + Valgrind verified)
+- **Compiler Memory**: Efficient thanks to ownership system
 
 ---
 
@@ -1076,8 +1099,8 @@ slow. Zen combines the best of all worlds with revolutionary innovations like pr
 A: Zen is 10x easier to learn (no lifetime annotations), compiles faster, has better error messages, and includes
 development hot-patching. You get Rust's performance without the complexity.
 
-**Q: Why C++ for the compiler instead of Rust or other modern languages?**
-A: C++ provides the perfect balance: total control like C, but with modern features like RAII, templates, and STL. We get zero runtime overhead, maximum performance, universal portability, plus automatic memory management and sophisticated abstractions for implementing innovations.
+**Q: Why Rust for the compiler instead of C++ or other languages?**
+A: Rust provides the perfect balance: memory safety by default, excellent pattern matching for AST manipulation, built-in `Result<T, E>` that matches our language design, rich ecosystem with compiler-specific crates, and modern tooling. We get zero memory bugs in the compiler itself plus sophisticated abstractions for implementing innovations.
 
 **Q: Is this just another systems language?**
 A: No! Zen targets everything - web (WebAssembly), desktop, mobile, backend. It's a universal language that's both
@@ -1086,18 +1109,17 @@ beginner-friendly and expert-powerful.
 ### **Technical Questions**
 
 **Q: How does automatic ownership work without garbage collection?**
-A: Zen uses compile-time analysis to determine object lifetimes, combined with RAII patterns inspired by C++. The
-compiler inserts cleanup code automatically - developers never think about memory management.
+A: Zen uses compile-time analysis to determine object lifetimes, similar to Rust but simplified. The compiler inserts cleanup code automatically - developers never think about memory management.
 
 **Q: How does hot-patching work securely?**
 A: Hot-patching only works in development mode with `@hotpatch` annotation. It uses dynamic loading to replace
 function implementations. In production builds, `@hotpatch` is completely ignored.
 
-**Q: Can I use existing C++ libraries?**
-A: Yes! Since the compiler is written in C++, C++ interop is native and seamless. C libraries work via extern "C". We'll also provide binding generators for popular libraries.
+**Q: Can I use existing Rust libraries?**
+A: Yes! Since the compiler is written in Rust, Rust crate integration will be seamless. We'll provide FFI bindings for C libraries and binding generators for popular libraries.
 
-**Q: How do you ensure memory safety in C++?**
-A: Modern C++ with RAII, smart pointers, and extensive testing with Valgrind, AddressSanitizer. The compiler architecture uses automatic memory management and clear ownership patterns.
+**Q: How do you ensure the compiler itself is bug-free?**
+A: Rust's ownership system makes memory bugs impossible, and we use extensive testing with property-based testing, fuzzing, and formal verification techniques where appropriate.
 
 ### **Adoption Questions**
 
@@ -1136,24 +1158,24 @@ standards.
 
 #### v0.1 Alpha - Foundation
 
-- ✅ STL-based lexer and parser
+- ✅ Rust-based lexer and parser
 - ✅ Arithmetic expressions
 - ✅ Variables (`let`/`const`) with type checking
 - ✅ Functions with parameters and return types
 - ✅ String interpolation
-- ✅ RAII-based memory management
+- ✅ Ownership-based memory management
 
 #### v0.2 Alpha - Complex Types
 
 - 📋 Custom types (`type User = { ... }`)
-- 📋 Arrays with STL containers
+- 📋 Arrays with Vec-based storage
 - 📋 Optional types (`?T`)
 - 📋 Control flow (`if`/`else`, `for`, `while`)
 - 📋 Pattern matching basics
 
 #### v0.3 Beta - Error Handling Revolution
 
-- 📋 Template-based `Result<T, E>` types
+- 📋 Native `Result<T, E>` types leveraging Rust
 - 📋 `throw`/`catch` expressions (not try/catch!)
 - 📋 Dual propagation (`?` and `try...else`)
 - 📋 Intelligent error messages with suggestions
@@ -1161,14 +1183,14 @@ standards.
 
 #### v0.4 Beta - Multi-target
 
-- 📋 WebAssembly compilation pipeline
+- 📋 WebAssembly compilation via LLVM
 - 📋 `@target(wasm, native, hybrid)` system
 - 📋 Cross-compilation for all platforms
 - 📋 Target-specific standard library
 
 #### v0.5 RC - Advanced Features
 
-- 📋 `async`/`await` with C++ coroutines
+- 📋 `async`/`await` with Rust async runtime
 - 📋 `@hotpatch` development mode
 - 📋 Complete standard library
 - 📋 Package manager (`zen add`, `zen publish`)
@@ -1188,9 +1210,9 @@ standards.
 
 **Every Commit Must Pass:**
 
-- ✅ All unit tests (>95% coverage)
-- ✅ RAII compliance check (no manual memory management)
-- ✅ Static analysis (Clang Static Analyzer + clang-tidy)
+- ✅ All unit tests (>95% coverage with `cargo tarpaulin`)
+- ✅ Memory safety check (zero `unsafe` blocks in core)
+- ✅ Static analysis (`cargo clippy` with deny warnings)
 - ✅ Integration tests
 - ✅ Performance regression tests
 
@@ -1199,16 +1221,16 @@ standards.
 - ✅ Complete end-to-end test suite
 - ✅ Cross-platform compilation tests
 - ✅ WebAssembly target validation
-- ✅ Security audit (static + dynamic)
+- ✅ Security audit (static analysis + fuzzing)
 - ✅ Performance benchmarks vs targets
 
 ### Testing Tools
 
-- **Unit Tests**: Google Test framework
-- **Memory**: Valgrind, AddressSanitizer, smart pointer verification
-- **Performance**: Custom benchmarking suite
-- **Fuzzing**: AFL, custom grammar-based fuzzer
-- **Static Analysis**: Clang Static Analyzer, clang-tidy, custom lints
+- **Unit Tests**: Built-in Rust testing with `#[cfg(test)]`
+- **Memory**: Rust ownership system prevents memory issues
+- **Performance**: Custom benchmarking with `criterion` crate
+- **Fuzzing**: `cargo-fuzz` with custom grammar-based fuzzer
+- **Static Analysis**: `cargo clippy`, `cargo audit`, custom lints
 
 ---
 
@@ -1218,47 +1240,58 @@ standards.
 
 1. **Setup Development Environment**
    ```bash
+   # Install Rust
+   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+   source ~/.cargo/env
+   
    # Clone repository
    git clone https://github.com/AtsuLeVrai/zen
    cd zen-lang
    
-   # Install dependencies
-   sudo apt install gcc g++ clang clang-tidy valgrind cmake ninja-build
-   
    # Build compiler
-   mkdir build && cd build
-   cmake .. -GNinja
-   ninja
+   cargo build
    
    # Run tests
-   ninja test
+   cargo test
+   
+   # Check code quality
+   cargo clippy
+   cargo fmt
    ```
 
 2. **Code Standards**
-   - **C++26 standard** - modern C++ features encouraged
-   - **4 spaces** for indentation (no tabs)
+   - **Rust 2021 edition** - latest stable features
+   - **4 spaces** for indentation (rustfmt default)
    - **80 character** line limits
    - **Descriptive names** - `parse_function_declaration` not `parse_func`
-   - **RAII compliance** - no manual memory management
-   - **const correctness** - use const wherever possible
+   - **Ownership compliance** - prefer owned types over references when possible
+   - **Error handling** - use `Result<T, E>` throughout
 
 3. **Memory Management Rules**
-   ```cpp
-   // Use smart pointers for automatic cleanup
-   auto tokens = std::make_unique<std::vector<Token>>();
-   auto ast = std::make_shared<ASTNode>(NODE_FUNCTION);
+   ```rust
+   // Use Rust's ownership system
+   struct CompilerContext {
+       tokens: Vec<Token>,
+       ast: Box<ASTRoot>,
+       symbols: Rc<RefCell<SymbolTable>>,
+   }
    
-   // Use STL containers for collections
-   std::vector<std::unique_ptr<Statement>> statements;
-   std::unordered_map<std::string, Symbol> symbol_table;
+   // Use enums for type-safe AST
+   #[derive(Debug, Clone)]
+   enum Statement {
+       Let { name: String, value: Expression },
+       Function { name: String, params: Vec<Parameter>, body: Block },
+       Return(Option<Expression>),
+   }
    
-   // RAII for resources
-   class FileProcessor {
-       std::ifstream file_;
-   public:
-       FileProcessor(const std::string& path) : file_(path) {}
-       // Automatic cleanup via destructor
-   };
+   // Pattern matching for processing
+   fn compile_statement(&self, stmt: &Statement) -> Result<(), Error> {
+       match stmt {
+           Statement::Let { name, value } => self.compile_let(name, value),
+           Statement::Function { name, params, body } => self.compile_function(name, params, body),
+           Statement::Return(expr) => self.compile_return(expr.as_ref()),
+       }
+   }
    ```
 
 ### Contribution Process
@@ -1267,7 +1300,7 @@ standards.
 2. **Fork Repository** - Work in your own fork
 3. **Create Branch** - `feature/hot-patching` or `fix/lexer-bug`
 4. **Code + Tests** - Include comprehensive tests
-5. **RAII Check** - Ensure no manual memory management
+5. **Quality Check** - `cargo test`, `cargo clippy`, `cargo fmt`
 6. **Pull Request** - Detailed description and tests
 7. **Code Review** - At least 2 maintainer approvals
 8. **Merge** - Squash commits for clean history
@@ -1276,17 +1309,17 @@ standards.
 
 **High Priority:**
 
-- STL-based lexer optimizations and error recovery
-- Template-based parser robustness and better error messages
-- WebAssembly code generation with C++ backend
-- Standard library implementation using modern C++
+- Rust-based lexer optimizations and error recovery
+- Enum-based parser robustness and better error messages
+- LLVM integration via `inkwell` crate
+- Standard library implementation using Rust patterns
 
 **Medium Priority:**
 
-- VS Code extension development
-- Documentation and examples
-- Package manager design
-- Cross-platform testing with CMake
+- VS Code extension development (TypeScript + Rust LSP)
+- Documentation and examples with `mdbook`
+- Package manager design inspired by Cargo
+- Cross-platform testing with GitHub Actions
 
 **Low Priority:**
 
@@ -1296,9 +1329,9 @@ standards.
 
 ### Coding Philosophy
 
-- **Modern C++ best practices** - RAII, smart pointers, const correctness
-- **Performance with safety** - zero-cost abstractions
-- **Template-based design** - compile-time polymorphism
-- **STL utilization** - leverage proven containers and algorithms
-- **Exception safety** - strong exception guarantees
-- **Testability** - every feature must be testable with Google Test
+- **Rust best practices** - ownership, borrowing, pattern matching
+- **Performance with safety** - zero-cost abstractions with memory safety
+- **Enum-based design** - type-safe AST and compiler phases
+- **Crate utilization** - leverage proven crates from ecosystem
+- **Error safety** - comprehensive `Result<T, E>` usage
+- **Testability** - every feature must be testable with built-in test framework
