@@ -1,0 +1,7 @@
+func main() -> i32 {
+    // Print a simple message to the console
+    print("Hello, World!");
+
+    // Return 0 to indicate successful execution
+    return 0;
+}
