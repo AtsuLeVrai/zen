@@ -24,7 +24,7 @@ everything from scratch with total control
 ### Core Characteristics
 
 - **Paradigm**: **Hybrid** (Object-Oriented + Functional + Procedural)
-- **Syntax**: **Rust/C style** with braces `{}`
+- **Syntax**: **C/C++ style** with braces `{}`
 - **Type System**: **Static strict typing** (like Rust/Go/TypeScript)
 - **Memory Management**: **Automatic ownership** (developers don't worry, highly memory efficient)
 - **Compilation**: **Best of both worlds** (incremental like Rust + ultra-fast like Go)
@@ -294,17 +294,17 @@ Hot-patching enabled for development mode
 
 ### Chosen Technologies
 
-- **Compiler Language**: **Rust** (memory safety + modern features + excellent ecosystem + zero-cost abstractions)
-   - **100% from scratch** - complete control over every aspect
-   - **Universal compilation** via LLVM to native + WebAssembly
-   - **Zero runtime overhead** - efficient machine code generation
-   - **Memory safety** - impossible to have memory bugs in the compiler itself
-   - **Rich ecosystem** - `clap`, `serde`, `syn`, `quote` for compiler development
-   - **Proven for compilers** - `rustc`, `swc`, many successful compilers use Rust
-   - **Excellent error handling** - `Result<T, E>` matches our language design
-   - **Pattern matching** - perfect for AST manipulation and parsing
-   - **Cargo ecosystem** - seamless dependency management and tooling
-   - **Modern language** - ownership system teaches better programming patterns
+- **Compiler Language**: **C** (maximum control + portability + performance + learning value)
+    - **100% from scratch** - complete control over every aspect
+    - **Universal compilation** via LLVM to native + WebAssembly
+    - **Zero runtime overhead** - efficient machine code generation
+    - **Maximum performance** - C is the gold standard for systems programming
+    - **Complete control** - every byte, every allocation, every optimization decision
+    - **Educational value** - deep understanding of memory management and low-level systems
+    - **Portability** - runs on everything from embedded systems to supercomputers
+    - **Predictable performance** - no hidden costs or abstractions
+    - **Industry standard** - most compilers and systems software written in C
+    - **Direct LLVM integration** - using LLVM C API for code generation
 - **Architecture**: Compiler **completely from scratch** (custom LLVM backend)
 - **Approach**: **Open source from day one**
 
@@ -318,38 +318,40 @@ Hot-patching enabled for development mode
 
 ### Interoperability
 
-- **Rust Integration**: Native since compiler is in Rust
-- **C Integration**: Excellent via FFI and bindgen
+- **C Integration**: Native since compiler is in C
+- **C++ Integration**: Excellent via C++ name mangling and ABI compatibility
 - **Other languages**: To be evaluated based on future community needs
 
 ---
 
 ## 📅 Detailed Timeline and Phases
 
-### Phase 0: Rust Mastery & Architecture (1-2 months)
+### Phase 0: C Mastery & Architecture (1-2 months)
 
-**Objective**: Master Rust for compiler development and design architecture
+**Objective**: Master advanced C for compiler development and design architecture
 
 #### Learning Steps:
 
-1. **Modern Rust techniques** (2 weeks)
-   - Ownership, borrowing, and lifetimes
-   - Pattern matching and enums for AST
-   - `Result<T, E>` and error handling patterns
-   - Trait system and generics
-   - Cargo and crate ecosystem
+1. **Modern C techniques** (2 weeks)
+    - Advanced pointer manipulation and memory management
+    - Function pointers and callback systems for compiler phases
+    - Dynamic memory allocation strategies for AST and symbol tables
+    - Modular programming with header files and static libraries
+    - Advanced debugging with valgrind, gdb, and static analysis tools
 
-2. **Compiler theory with Rust** (2 weeks)
-   - Study compiler crates: `syn`, `quote`, `proc-macro2`
-   - Analyze `rustc` architecture patterns
-   - Study modern Rust compiler design
-   - Lexing/Parsing with Rust patterns (nom, pest, or custom)
+2. **Compiler theory with C** (2 weeks)
+    - Study classic C compiler implementations (TinyCC, LCC)
+    - Memory-efficient AST representation with unions and structs
+    - Hash tables and data structures for symbol tables
+    - String handling and memory pools for efficient compilation
+    - LLVM C API integration patterns
 
 3. **Architecture design** (2-4 weeks)
-   - Enum-based AST structure design
-   - Ownership-based memory management strategy
-   - Trait-based multi-target compilation
-   - `Result<T, E>` based error handling throughout
+    - Struct-based AST design with tagged unions
+    - Manual memory management strategy with arenas and pools
+    - Modular compilation phases with clean interfaces
+    - Error handling with explicit return codes and context
+    - Multi-target compilation architecture
 
 ### Phase 1: Foundations (3-6 months)
 
@@ -357,28 +359,28 @@ Hot-patching enabled for development mode
 
 #### Technical Steps:
 
-1. **Complete Lexer in Rust** (1 month)
-   - All tokens: `func`, `let`, `const`, `->`, `@target`, etc.
-   - String interpolation `${}`
-   - Numbers, strings, identifiers
-   - Comments `//` and `/* */`
-   - Custom lexer with `Vec<Token>` and efficient string handling
+1. **Complete Lexer in C** (1 month)
+    - All tokens: `func`, `let`, `const`, `->`, `@target`, etc.
+    - String interpolation `${}`
+    - Numbers, strings, identifiers
+    - Comments `//` and `/* */`
+    - Custom lexer with dynamic arrays and efficient string handling
 
-2. **Robust Parser in Rust** (2 months)
-   - Recursive descent parser with Rust enums
-   - Arithmetic expressions with operator precedence
-   - Variable declarations (`let`/`const`)
-   - Function definitions with `func`
-   - Basic types: `i32`, `f64`, `string`, `bool`
-   - `Box<T>` based AST for recursive structures
+2. **Robust Parser in C** (2 months)
+    - Recursive descent parser with struct-based AST
+    - Arithmetic expressions with operator precedence
+    - Variable declarations (`let`/`const`)
+    - Function definitions with `func`
+    - Basic types: `i32`, `f64`, `string`, `bool`
+    - Memory-efficient AST with arena allocation
 
-3. **Code Generator in Rust** (2-3 months)
-   - LLVM backend using `inkwell` crate
-   - Ownership-managed variables and constants
-   - Function calls and stack management
-   - Arithmetic operations
-   - Basic I/O operations
-   - Initial WebAssembly target
+3. **Code Generator in C** (2-3 months)
+    - LLVM backend using LLVM C API
+    - Manual memory management for variables and constants
+    - Function calls and stack management
+    - Arithmetic operations
+    - Basic I/O operations
+    - Initial WebAssembly target
 
 #### Phase 1 Deliverables:
 
@@ -403,7 +405,7 @@ func add_numbers(x: i32, y: i32) -> i32 {
 #### New Features:
 
 - Custom types: `type User = { full_name: string, user_age: i32 }`
-- Arrays: `i32[]`, `User[]` with Vec-based dynamic memory management
+- Arrays: `i32[]`, `User[]` with dynamic memory management
 - Optionals: `?string` with null safety
 - Conditions: classic `if/else` with proper branching
 - Loops: `for`, `while`, ranges `0..10`
@@ -445,13 +447,13 @@ func main() -> i32 {
 
 #### New Features:
 
-- `Result<T, E>` types leveraging Rust's native Result
+- `Result<T, E>` types with explicit error handling in C
 - `throw` and `catch` (revolutionary approach - not try/catch!)
 - Dual propagation: `?` AND `try...else`
 - Ultra-clear error messages with suggestions
 - Real-time compiler advice system
 - Basic race condition detection
-- Ownership-based automatic resource management
+- Manual memory management with automatic cleanup hints
 
 #### Phase 3 Deliverables:
 
@@ -486,9 +488,9 @@ func handle_api_errors() {
 
 #### New Features:
 
-- Complete WebAssembly compilation pipeline via LLVM
+- Complete WebAssembly compilation pipeline via LLVM C API
 - `@target(wasm, native, hybrid)` system with conditional compilation
-- `async`/`await` with efficient async runtime
+- `async`/`await` with efficient async runtime implemented in C
 - Complete cross-compilation for all platforms
 - Adaptive standard library per target
 - Performance optimizations for each target
@@ -522,7 +524,7 @@ async func load_user_data() -> Result<User[], Error> {
 #### New Features:
 
 - `@hotpatch` for development with dynamic loading
-- Generics `<T>` leveraging Rust's trait system
+- Generics `<T>` with C-based template system
 - Advanced problem detection (race conditions, memory leaks, security)
 - Intelligent compiler suggestions system
 - Destructuring: `{ full_name, user_age } = user_data`
@@ -571,12 +573,12 @@ func calculate_product_price<T>(product_item: T, price_processor: (T) -> f64) ->
 - ✅ Variables `let`/`const` with strict types
 - ✅ Functions with parameters and return type `func name() -> type`
 - ✅ String interpolation `${variable}`
-- ✅ Ownership-based memory management working
+- ✅ Manual memory management working efficiently
 
 ### Medium Term (18 months)
 
 - ✅ Complex types: `type User = { ... }`
-- ✅ Arrays: `User[]` with Vec-based dynamic allocation
+- ✅ Arrays: `User[]` with dynamic allocation
 - ✅ Error handling: `Result<T, E>`, `throw`, `catch`
 - ✅ Dual propagation: `?` and `try...else`
 - ✅ Revolutionary error messages
@@ -601,71 +603,71 @@ func calculate_product_price<T>(product_item: T, price_processor: (T) -> f64) ->
 
 ### Major Technical Challenges
 
-- **Multi-target compilation complexity** (WebAssembly + native via LLVM)
+- **Multi-target compilation complexity** (WebAssembly + native via LLVM C API)
 - **Compiler performance** (incremental AND fast compilation)
-- **Ownership-based automatic memory management** design
+- **Manual memory management** design and safety
 - **Secure hot-patching** with dynamic loading (dev only)
 - **Intelligent error messages** without AI dependency
 - **Robust cross-compilation** pipeline
 
-### Rust-Specific Advantages
+### C-Specific Advantages
 
-- **Memory safety by default** - impossible to have memory bugs in compiler
-- **Rich ecosystem** - excellent crates for compiler development
-- **Pattern matching** - perfect for AST manipulation and parsing
-- **Ownership system** - natural fit for resource management
-- **`Result<T, E>`** - built-in error handling matches our language design
-- **Modern tooling** - cargo, rustfmt, clippy for excellent development experience
+- **Maximum control** - every byte, every allocation, every optimization decision
+- **Predictable performance** - no hidden costs or runtime overhead
+- **Universal portability** - runs on everything from embedded to supercomputers
+- **Educational value** - deep understanding of memory management and systems
+- **Industry standard** - most successful compilers written in C
+- **Direct LLVM integration** - using native LLVM C API
 
 ### Ecosystem Challenges
 
-- **Fierce competition**: Rust/Go/Zig rapidly growing
+- **Memory management complexity** - manual memory management vs ease of use
 - **Development time**: 3-5 years minimum for production
 - **Community building** and package ecosystem
-- **Learning curve**: Rust ownership system mastery
+- **Learning curve**: C systems programming mastery
 
 ### Mitigation Strategies
 
 - **Start small** with key innovations (error messages, hot-patching)
-- **Immediate open source** to attract Rust developers and contributors
+- **Immediate open source** to attract C developers and contributors
 - **Focus on differentiators**: predictive errors + hot-patching + simplicity
 - **Exemplary documentation** from Hello World
-- **Progressive learning**: grow Rust expertise with the project
+- **Progressive learning**: grow C expertise with the project
 - **Incremental phases**: each phase usable and demonstrable
-- **Rust safety**: leverage borrow checker and ownership system
-- **Extensive testing**: unit tests, integration tests, property-based testing with Rust frameworks
+- **Memory safety tools**: valgrind, AddressSanitizer, static analysis
+- **Extensive testing**: unit tests, integration tests, memory leak detection
 
 ---
 
 ## 🚀 Immediate Next Steps
 
-### Week 1-2: Rust Environment Setup
+### Week 1-2: C Environment Setup
 
-1. **Rust development environment**: Latest stable Rust, Cargo, rustup, debugging tools
-2. **GitHub repo**: project structure, Cargo.toml, README, this roadmap
+1. **C development environment**: GCC/Clang, Make/CMake, debugging tools (gdb, valgrind)
+2. **GitHub repo**: project structure, Makefile, README, this roadmap
 3. **Final name confirmation**: "Zen" or alternative
-4. **Modern Rust compiler study**: rustc architecture, LLVM integration patterns
+4. **Classic C compiler study**: TinyCC, LCC architecture patterns
 
-### Month 1: First Lexer in Rust
+### Month 1: First Lexer in C
 
 1. **Basic token lexer**: `func`, `let`, `const`, `->`, `{`, `}`
 2. **String processing**: tokenize `${variable}` interpolation
 3. **Comment handling**: `//` and `/* */`
-4. **Rust-based management**: efficient token Vec and String handling
-5. **Testing framework**: Built-in Rust testing with `#[cfg(test)]`
+4. **C-based management**: efficient token arrays and string handling
+5. **Testing framework**: Custom C testing with assertion macros
 
-### Month 2-3: Parser and AST in Rust
+### Month 2-3: Parser and AST in C
 
 1. **Expression parser**: arithmetic with operator precedence
 2. **Declarations**: `let variable_name: type = value`
 3. **Functions**: `func function_name(params) -> return_type { }`
-4. **Enum-based AST**: Rust enums for type-safe AST nodes
-5. **Pattern matching**: efficient AST manipulation with match expressions
+4. **Struct-based AST**: C structs with tagged unions for type-safe AST nodes
+5. **Memory management**: Arena allocation for AST nodes
 
 ### Month 4-6: First Code Generator
 
-1. **LLVM backend**: Using `inkwell` crate for LLVM integration
-2. **Variable management**: automatic stack and heap allocation
+1. **LLVM backend**: Using LLVM C API for code generation
+2. **Variable management**: manual stack and heap allocation
 3. **Function management**: calls, returns, stack frames
 4. **First complete program**: functional calculator
 5. **Basic WebAssembly**: simple target for web deployment
@@ -683,18 +685,18 @@ func calculate_product_price<T>(product_item: T, price_processor: (T) -> f64) ->
 - **Targets** supported (native platforms, WebAssembly)
 - **Memory efficiency** (compiler and generated code)
 
-### Code Quality Metrics (Rust-specific)
+### Code Quality Metrics (C-specific)
 
-- **Memory safety**: Zero `unsafe` blocks in core compiler
-- **Code coverage**: >90% test coverage with `cargo tarpaulin`
-- **Static analysis**: Clean `cargo clippy` results
-- **Documentation**: Complete docs with `cargo doc`
-- **Performance**: Zero memory leaks guaranteed by Rust ownership
+- **Memory safety**: Zero memory leaks detected by valgrind
+- **Code coverage**: >90% test coverage with gcov
+- **Static analysis**: Clean results from cppcheck, clang-analyzer
+- **Documentation**: Complete docs with doxygen
+- **Performance**: Zero memory leaks and optimal performance
 
 ### Community Metrics
 
 - **GitHub stars** and active contributors
-- **Crates** in ecosystem registry
+- **Packages** in ecosystem registry
 - **Adoption** by early users and projects
 - **Documentation** completeness and quality
 - **Issues** resolved vs open ratio
@@ -702,32 +704,32 @@ func calculate_product_price<T>(product_item: T, price_processor: (T) -> f64) ->
 
 ---
 
-## 💡 Why Rust is Perfect for Zen
+## 💡 Why C is Perfect for Zen
 
 ### Technical Advantages
 
-- **Memory Safety by Default**: No segfaults, buffer overflows, or memory leaks possible
-- **Pattern Matching**: Perfect for AST manipulation and compiler phases
-- **`Result<T, E>`**: Built-in error handling exactly matches our language design
-- **Zero-cost Abstractions**: High-level code compiles to efficient machine code
-- **LLVM Integration**: Excellent support via `inkwell` and other crates
-- **Modern Language**: Ownership system prevents entire classes of bugs
+- **Maximum Control**: Every byte of memory, every CPU instruction under our control
+- **Predictable Performance**: No hidden costs, no garbage collection, no runtime overhead
+- **Universal Portability**: Runs on everything from microcontrollers to supercomputers
+- **Direct Hardware Access**: Optimal code generation and system-level programming
+- **LLVM Integration**: Native LLVM C API for world-class code generation
+- **Industry Standard**: Most successful compilers (GCC, Clang, V8) written in C/C++
 
 ### Strategic Advantages
 
-- **Proven Track Record**: `rustc`, `swc`, and many successful compilers use Rust
-- **Learning Value**: Understanding systems programming and memory management
-- **Performance**: Comparable to C++ with much better safety guarantees
-- **Ecosystem**: Rich crate ecosystem with excellent compiler-related libraries
-- **Community**: Active, helpful community with excellent documentation
+- **Proven Track Record**: GCC, TinyCC, LCC, and many successful compilers use C
+- **Learning Value**: Deep understanding of memory management and systems programming
+- **Performance**: Optimal performance with complete control over resources
+- **Ecosystem**: Mature tooling with excellent debugging and profiling tools
+- **Community**: Large community of systems programmers and compiler experts
 
 ### Innovation Enablement
 
-- **Enum-based AST**: Type-safe AST representation with exhaustive pattern matching
-- **Ownership-based Resource Management**: Perfect model for Zen's automatic ownership
-- **Hot-patching**: Safe dynamic loading with proper type checking
-- **Error System**: Native `Result<T, E>` types for compiler and language
-- **Compiler Intelligence**: Safe parallelization and advanced analysis systems
+- **Struct-based AST**: Efficient memory layout with tagged unions for type safety
+- **Manual Memory Management**: Perfect model for teaching Zen's automatic ownership
+- **Hot-patching**: Dynamic loading with complete control over module loading
+- **Error System**: Custom error handling system with zero runtime overhead
+- **Compiler Intelligence**: Advanced analysis with optimal performance
 
 ---
 
@@ -735,17 +737,17 @@ func calculate_product_price<T>(product_item: T, price_processor: (T) -> f64) ->
 
 ### Feature Comparison Matrix
 
-| Feature             | Zen                  | Rust            | Go             | TypeScript    | Python        |
-|---------------------|----------------------|-----------------|----------------|---------------|---------------| 
-| **Learning Curve**  | ⭐⭐ Easy              | ⭐⭐⭐⭐⭐ Very Hard | ⭐⭐⭐ Medium     | ⭐⭐⭐ Medium    | ⭐⭐ Easy       |
-| **Compile Speed**   | ⚡⚡⚡ Ultra-fast       | ⭐⭐ Slow         | ⚡⚡⚡ Ultra-fast | ⭐⭐ Slow       | N/A           |
-| **Runtime Speed**   | ⚡⚡⚡ Native           | ⚡⚡⚡ Native      | ⚡⚡ Fast        | ⭐ Interpreted | ⭐ Interpreted |
-| **Error Messages**  | 🚀🚀🚀 Revolutionary | ⭐⭐ Good         | ⭐⭐ Basic       | ⭐⭐ Good       | ⭐ Cryptic     |
-| **Hot-patching**    | ✅ Yes (Dev)          | ❌ No            | ❌ No           | ❌ No          | ✅ Yes         |
-| **Memory Safety**   | ✅ Automatic          | ✅ Manual        | ✅ GC           | ❌ Runtime     | ❌ Runtime     |
-| **Multi-target**    | ✅ Built-in           | ⭐⭐ Complex      | ⭐⭐ Limited     | ✅ Good        | ❌ Limited     |
-| **Package Manager** | ✅ Built-in           | ✅ Cargo         | ✅ Go mod       | ✅ npm         | ✅ pip         |
-| **WebAssembly**     | ✅ First-class        | ✅ Good          | ✅ Basic        | ✅ Good        | ❌ No          |
+| Feature             | Zen                  | Rust            | C              | C++             | Go             | Python        |
+|---------------------|----------------------|-----------------|----------------|-----------------|----------------|---------------| 
+| **Learning Curve**  | ⭐⭐ Easy              | ⭐⭐⭐⭐⭐ Very Hard | ⭐⭐⭐⭐ Hard      | ⭐⭐⭐⭐⭐ Very Hard | ⭐⭐⭐ Medium     | ⭐⭐ Easy       |
+| **Compile Speed**   | ⚡⚡⚡ Ultra-fast       | ⭐⭐ Slow         | ⚡⚡⚡ Ultra-fast | ⭐⭐ Slow         | ⚡⚡⚡ Ultra-fast | N/A           |
+| **Runtime Speed**   | ⚡⚡⚡ Native           | ⚡⚡⚡ Native      | ⚡⚡⚡ Native     | ⚡⚡⚡ Native      | ⚡⚡ Fast        | ⭐ Interpreted |
+| **Error Messages**  | 🚀🚀🚀 Revolutionary | ⭐⭐ Good         | ⭐ Basic        | ⭐ Basic         | ⭐⭐ Basic       | ⭐ Cryptic     |
+| **Hot-patching**    | ✅ Yes (Dev)          | ❌ No            | ❌ No           | ❌ No            | ❌ No           | ✅ Yes         |
+| **Memory Safety**   | ✅ Automatic          | ✅ Manual        | ❌ Manual       | ❌ Manual        | ✅ GC           | ❌ Runtime     |
+| **Multi-target**    | ✅ Built-in           | ⭐⭐ Complex      | ✅ Excellent    | ✅ Excellent     | ⭐⭐ Limited     | ❌ Limited     |
+| **Package Manager** | ✅ Built-in           | ✅ Cargo         | ❌ None         | ❌ Various       | ✅ Go mod       | ✅ pip         |
+| **WebAssembly**     | ✅ First-class        | ✅ Good          | ✅ Good         | ✅ Good          | ✅ Basic        | ❌ No          |
 
 ### Why Zen Wins
 
@@ -756,26 +758,26 @@ func calculate_product_price<T>(product_item: T, price_processor: (T) -> f64) ->
 - **Better error messages** - predictive with suggestions
 - **Hot-patching** - modify code without restart in development
 
-**⚡ Against Go:**
+**⚡ Against C:**
+
+- **Better error handling** - dual propagation, catch expressions
+- **Type safety** - compile-time type checking prevents many bugs
+- **Modern features** - generics, optionals, pattern matching
+- **Automatic memory management** - ownership system without manual malloc/free
+
+**💡 Against C++:**
+
+- **Simpler syntax** - clean, modern syntax without C++ complexity
+- **Better tooling** - built-in package manager, modern error messages
+- **No legacy baggage** - designed from scratch for modern development
+- **Faster compilation** - no template instantiation overhead
+
+**🎯 Against Go:**
 
 - **Richer type system** - generics, optionals, Result types
 - **Better error handling** - dual propagation, catch expressions
 - **WebAssembly first-class** - not an afterthought
 - **More powerful features** - destructuring, pattern matching
-
-**💡 Against TypeScript:**
-
-- **True compilation** - no runtime overhead
-- **Memory efficiency** - no garbage collection pauses
-- **Better tooling** - compiler intelligence, race condition detection
-- **Multi-target native** - desktop, mobile, not just web
-
-**🎯 Against Python:**
-
-- **Static typing** - catch errors at compile time
-- **10-100x faster** - compiled to native code
-- **Better tooling** - IDE support, debugging, profiling
-- **Memory efficiency** - no interpreter overhead
 
 ---
 
@@ -786,75 +788,22 @@ func calculate_product_price<T>(product_item: T, price_processor: (T) -> f64) ->
 ```
 [Zen Source Code (.zen)]
         ↓
-[Lexical Analysis (Rust Lexer)]
-    → Vec<Token> with efficient string handling
+[Lexical Analysis (C Lexer)]
+    → Token arrays with efficient string handling
         ↓
-[Syntax Analysis (Rust Parser)]
-    → Box<T>-based Abstract Syntax Tree (AST) with Rust enums
+[Syntax Analysis (C Parser)]
+    → Struct-based Abstract Syntax Tree (AST) with tagged unions
         ↓
-[Semantic Analysis (Rust Analyzer)]
-    → Pattern matching-based type checking, scope resolution, error detection
+[Semantic Analysis (C Analyzer)]
+    → Type checking, scope resolution, error detection
         ↓
-[Optimization (Rust Optimizer)]
+[Optimization (C Optimizer)]
     → Dead code elimination, constant folding, inlining
         ↓
-[Code Generation (LLVM via inkwell)]
+[Code Generation (LLVM via C API)]
     ↙                    ↘
 [Native Code]        [WebAssembly]
 (x86, ARM, etc.)     (.wasm files)
-```
-
-### Memory Management Strategy
-
-```rust
-// Ownership-based compiler architecture
-struct CompilerContext {
-    tokens: Vec<Token>,
-    ast: Box<ASTRoot>,
-    symbols: Rc<RefCell<SymbolTable>>,
-    generators: Vec<Box<dyn CodeGenerator>>,
-}
-
-impl CompilerContext {
-    // Automatic cleanup via Drop trait
-    // No manual memory management needed
-}
-
-// Enum-based AST nodes for type safety
-#[derive(Debug, Clone)]
-enum Expression {
-    Number(i64),
-    String(String),
-    BinaryOp {
-        left: Box<Expression>,
-        op: Operator,
-        right: Box<Expression>,
-    },
-    FunctionCall {
-        name: String,
-        args: Vec<Expression>,
-    },
-}
-
-// Pattern matching for AST processing
-impl Expression {
-    fn compile(&self, ctx: &mut CodegenContext) -> Result<Value, Error> {
-        match self {
-            Expression::Number(n) => ctx.create_int_constant(*n),
-            Expression::String(s) => ctx.create_string_constant(s),
-            Expression::BinaryOp { left, op, right } => {
-                let lval = left.compile(ctx)?;
-                let rval = right.compile(ctx)?;
-                ctx.create_binary_op(*op, lval, rval)
-            }
-            Expression::FunctionCall { name, args } => {
-                let arg_values: Result<Vec<_>, _> = 
-                    args.iter().map(|arg| arg.compile(ctx)).collect();
-                ctx.create_function_call(name, arg_values?)
-            }
-        }
-    }
-}
 ```
 
 ---
@@ -863,16 +812,17 @@ impl Expression {
 
 ### Compilation Speed Goals
 
-| Language   | Hello World | Large Project (100k LOC) | Incremental Build |
-|------------|-------------|--------------------------|-------------------|
-| **Zen**    | < 10ms      | < 30s                    | < 2s              |  
-| Rust       | 200ms       | 10+ min                  | 30s               |
-| Go         | 50ms        | 60s                      | 5s                |
-| TypeScript | 100ms       | 2+ min                   | 10s               |
+| Language | Hello World | Large Project (100k LOC) | Incremental Build |
+|----------|-------------|--------------------------|-------------------|
+| **Zen**  | < 10ms      | < 30s                    | < 2s              |  
+| C (GCC)  | 50ms        | 2+ min                   | 30s               |
+| Rust     | 200ms       | 10+ min                  | 30s               |
+| Go       | 50ms        | 60s                      | 5s                |
+| C++      | 500ms       | 15+ min                  | 2+ min            |
 
 ### Runtime Performance Goals
 
-| Benchmark            | Zen  | Rust | C    | C++  | Go   | Python |
+| Benchmark            | Zen  | C    | Rust | C++  | Go   | Python |
 |----------------------|------|------|------|------|------|--------| 
 | **Fibonacci (n=40)** | 1.0x | 1.0x | 1.0x | 1.0x | 1.2x | 50x    |
 | **JSON Parsing**     | 1.0x | 1.0x | 1.0x | 1.0x | 1.3x | 10x    |
@@ -881,10 +831,10 @@ impl Expression {
 
 ### Memory Efficiency Goals
 
-- **Binary Size**: Comparable to Rust, smaller than Go
-- **Memory Usage**: Zero leaks guaranteed by Rust ownership
+- **Binary Size**: Comparable to C, smaller than Rust/Go
+- **Memory Usage**: Zero leaks with careful manual management
 - **Startup Time**: < 1ms for CLI tools
-- **Compiler Memory**: Efficient thanks to ownership system
+- **Compiler Memory**: Efficient arena-based allocation
 
 ---
 
@@ -1095,12 +1045,14 @@ func main() -> i32 {
 A: Existing languages have fundamental flaws - Rust is too complex, Go lacks features, JavaScript is messy, Python is
 slow. Zen combines the best of all worlds with revolutionary innovations like predictive errors and hot-patching.
 
-**Q: How is Zen different from Rust?**
-A: Zen is 10x easier to learn (no lifetime annotations), compiles faster, has better error messages, and includes
-development hot-patching. You get Rust's performance without the complexity.
+**Q: How is Zen different from C?**
+A: Zen provides modern features (generics, optionals, error handling) with automatic memory management, while C requires
+manual memory management. Zen compiles to the same performance as C but is much easier and safer to use.
 
-**Q: Why Rust for the compiler instead of C++ or other languages?**
-A: Rust provides the perfect balance: memory safety by default, excellent pattern matching for AST manipulation, built-in `Result<T, E>` that matches our language design, rich ecosystem with compiler-specific crates, and modern tooling. We get zero memory bugs in the compiler itself plus sophisticated abstractions for implementing innovations.
+**Q: Why C for the compiler instead of Rust or other languages?**
+A: C provides maximum control over every aspect of the compiler, predictable performance with no hidden costs, universal
+portability, and direct LLVM integration. We get complete understanding of memory management and can implement
+innovations like hot-patching with full control over dynamic loading.
 
 **Q: Is this just another systems language?**
 A: No! Zen targets everything - web (WebAssembly), desktop, mobile, backend. It's a universal language that's both
@@ -1109,17 +1061,20 @@ beginner-friendly and expert-powerful.
 ### **Technical Questions**
 
 **Q: How does automatic ownership work without garbage collection?**
-A: Zen uses compile-time analysis to determine object lifetimes, similar to Rust but simplified. The compiler inserts cleanup code automatically - developers never think about memory management.
+A: Zen uses compile-time analysis to determine object lifetimes, implementing ownership rules similar to Rust but
+simplified. The compiler inserts cleanup code automatically - developers never think about memory management.
 
 **Q: How does hot-patching work securely?**
 A: Hot-patching only works in development mode with `@hotpatch` annotation. It uses dynamic loading to replace
 function implementations. In production builds, `@hotpatch` is completely ignored.
 
-**Q: Can I use existing Rust libraries?**
-A: Yes! Since the compiler is written in Rust, Rust crate integration will be seamless. We'll provide FFI bindings for C libraries and binding generators for popular libraries.
+**Q: Can I use existing C libraries?**
+A: Yes! Since the compiler is written in C, C library integration is seamless. We'll provide automatic header parsing
+and binding generation for popular libraries.
 
 **Q: How do you ensure the compiler itself is bug-free?**
-A: Rust's ownership system makes memory bugs impossible, and we use extensive testing with property-based testing, fuzzing, and formal verification techniques where appropriate.
+A: We use extensive testing with valgrind for memory leak detection, AddressSanitizer for memory safety, static analysis
+tools, and careful manual memory management patterns with arena allocation.
 
 ### **Adoption Questions**
 
@@ -1127,8 +1082,8 @@ A: Rust's ownership system makes memory bugs impossible, and we use extensive te
 A: Version 1.0 is targeted for 24 months. Early versions (0.5+) will be suitable for experimental projects and
 contributions.
 
-**Q: How can I migrate from Python/JavaScript/Go?**
-A: We're building migration guides and tools. Zen's syntax is familiar to most developers, and the type system catches
+**Q: How can I migrate from C/C++/Python/JavaScript?**
+A: We're building migration guides and tools. Zen's syntax is familiar to C developers, and the type system catches
 migration errors early.
 
 **Q: Will there be IDE support?**
@@ -1158,24 +1113,24 @@ standards.
 
 #### v0.1 Alpha - Foundation
 
-- ✅ Rust-based lexer and parser
+- ✅ C-based lexer and parser
 - ✅ Arithmetic expressions
 - ✅ Variables (`let`/`const`) with type checking
 - ✅ Functions with parameters and return types
 - ✅ String interpolation
-- ✅ Ownership-based memory management
+- ✅ Manual memory management with arenas
 
 #### v0.2 Alpha - Complex Types
 
 - 📋 Custom types (`type User = { ... }`)
-- 📋 Arrays with Vec-based storage
+- 📋 Arrays with dynamic allocation
 - 📋 Optional types (`?T`)
 - 📋 Control flow (`if`/`else`, `for`, `while`)
 - 📋 Pattern matching basics
 
 #### v0.3 Beta - Error Handling Revolution
 
-- 📋 Native `Result<T, E>` types leveraging Rust
+- 📋 Native `Result<T, E>` types in C
 - 📋 `throw`/`catch` expressions (not try/catch!)
 - 📋 Dual propagation (`?` and `try...else`)
 - 📋 Intelligent error messages with suggestions
@@ -1183,14 +1138,14 @@ standards.
 
 #### v0.4 Beta - Multi-target
 
-- 📋 WebAssembly compilation via LLVM
+- 📋 WebAssembly compilation via LLVM C API
 - 📋 `@target(wasm, native, hybrid)` system
 - 📋 Cross-compilation for all platforms
 - 📋 Target-specific standard library
 
 #### v0.5 RC - Advanced Features
 
-- 📋 `async`/`await` with Rust async runtime
+- 📋 `async`/`await` with C async runtime
 - 📋 `@hotpatch` development mode
 - 📋 Complete standard library
 - 📋 Package manager (`zen add`, `zen publish`)
@@ -1210,9 +1165,9 @@ standards.
 
 **Every Commit Must Pass:**
 
-- ✅ All unit tests (>95% coverage with `cargo tarpaulin`)
-- ✅ Memory safety check (zero `unsafe` blocks in core)
-- ✅ Static analysis (`cargo clippy` with deny warnings)
+- ✅ All unit tests (>95% coverage with gcov)
+- ✅ Memory leak check (valgrind clean)
+- ✅ Static analysis (cppcheck, clang-analyzer clean)
 - ✅ Integration tests
 - ✅ Performance regression tests
 
@@ -1226,73 +1181,13 @@ standards.
 
 ### Testing Tools
 
-- **Unit Tests**: Built-in Rust testing with `#[cfg(test)]`
-- **Memory**: Rust ownership system prevents memory issues
-- **Performance**: Custom benchmarking with `criterion` crate
-- **Fuzzing**: `cargo-fuzz` with custom grammar-based fuzzer
-- **Static Analysis**: `cargo clippy`, `cargo audit`, custom lints
+- **Unit Tests**: Custom C testing framework with assertion macros
+- **Memory**: Valgrind for leak detection, AddressSanitizer for memory safety
+- **Performance**: Custom benchmarking with C timing code
+- **Fuzzing**: AFL++ with custom grammar-based fuzzer
+- **Static Analysis**: cppcheck, clang-analyzer, custom lints
 
 ---
-
-## 🤝 Contribution Guide
-
-### Getting Started
-
-1. **Setup Development Environment**
-   ```bash
-   # Install Rust
-   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-   source ~/.cargo/env
-   
-   # Clone repository
-   git clone https://github.com/AtsuLeVrai/zen
-   cd zen-lang
-   
-   # Build compiler
-   cargo build
-   
-   # Run tests
-   cargo test
-   
-   # Check code quality
-   cargo clippy
-   cargo fmt
-   ```
-
-2. **Code Standards**
-   - **Rust 2021 edition** - latest stable features
-   - **4 spaces** for indentation (rustfmt default)
-   - **80 character** line limits
-   - **Descriptive names** - `parse_function_declaration` not `parse_func`
-   - **Ownership compliance** - prefer owned types over references when possible
-   - **Error handling** - use `Result<T, E>` throughout
-
-3. **Memory Management Rules**
-   ```rust
-   // Use Rust's ownership system
-   struct CompilerContext {
-       tokens: Vec<Token>,
-       ast: Box<ASTRoot>,
-       symbols: Rc<RefCell<SymbolTable>>,
-   }
-   
-   // Use enums for type-safe AST
-   #[derive(Debug, Clone)]
-   enum Statement {
-       Let { name: String, value: Expression },
-       Function { name: String, params: Vec<Parameter>, body: Block },
-       Return(Option<Expression>),
-   }
-   
-   // Pattern matching for processing
-   fn compile_statement(&self, stmt: &Statement) -> Result<(), Error> {
-       match stmt {
-           Statement::Let { name, value } => self.compile_let(name, value),
-           Statement::Function { name, params, body } => self.compile_function(name, params, body),
-           Statement::Return(expr) => self.compile_return(expr.as_ref()),
-       }
-   }
-   ```
 
 ### Contribution Process
 
@@ -1300,7 +1195,7 @@ standards.
 2. **Fork Repository** - Work in your own fork
 3. **Create Branch** - `feature/hot-patching` or `fix/lexer-bug`
 4. **Code + Tests** - Include comprehensive tests
-5. **Quality Check** - `cargo test`, `cargo clippy`, `cargo fmt`
+5. **Quality Check** - `make test`, `make valgrind`, `make analyze`
 6. **Pull Request** - Detailed description and tests
 7. **Code Review** - At least 2 maintainer approvals
 8. **Merge** - Squash commits for clean history
@@ -1309,17 +1204,17 @@ standards.
 
 **High Priority:**
 
-- Rust-based lexer optimizations and error recovery
-- Enum-based parser robustness and better error messages
-- LLVM integration via `inkwell` crate
-- Standard library implementation using Rust patterns
+- C-based lexer optimizations and error recovery
+- Struct-based parser robustness and better error messages
+- LLVM integration via C API
+- Standard library implementation with C
 
 **Medium Priority:**
 
-- VS Code extension development (TypeScript + Rust LSP)
-- Documentation and examples with `mdbook`
-- Package manager design inspired by Cargo
-- Cross-platform testing with GitHub Actions
+- VS Code extension development (TypeScript + C LSP)
+- Documentation and examples with custom generator
+- Package manager design inspired by modern tools
+- Cross-platform testing with CI/CD
 
 **Low Priority:**
 
@@ -1329,9 +1224,9 @@ standards.
 
 ### Coding Philosophy
 
-- **Rust best practices** - ownership, borrowing, pattern matching
-- **Performance with safety** - zero-cost abstractions with memory safety
-- **Enum-based design** - type-safe AST and compiler phases
-- **Crate utilization** - leverage proven crates from ecosystem
-- **Error safety** - comprehensive `Result<T, E>` usage
-- **Testability** - every feature must be testable with built-in test framework
+- **C best practices** - manual memory management, explicit error handling
+- **Performance with control** - maximum efficiency with complete control
+- **Struct-based design** - type-safe AST with tagged unions
+- **Standard library usage** - minimal dependencies, mostly libc
+- **Memory safety** - explicit ownership and cleanup patterns
+- **Testability** - every feature must be testable with custom framework
