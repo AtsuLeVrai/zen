@@ -1,5 +1,9 @@
 # Zen - A Modern Programming Language
 
+> ⚠️ **IMPORTANT NOTICE**: This README is a work in progress and subject to significant changes. The project
+> specifications, features, and implementation details may be modified as development progresses. Consider this document
+> as a living roadmap rather than final specifications.
+
 ---
 
 ## 🎯 Vision & Motivation
@@ -26,9 +30,9 @@ everything from scratch with total control
 - **Paradigm**: **Hybrid** (Object-Oriented + Functional + Procedural)
 - **Syntax**: **C/C++ style** with braces `{}`
 - **Type System**: **Static strict typing** (like Rust/Go/TypeScript)
-- **Memory Management**: **Automatic ownership** (developers don't worry, highly memory efficient)
-- **Compilation**: **Best of both worlds** (incremental like Rust + ultra-fast like Go)
-- **Targets**: Web (WebAssembly), Backend (native), Desktop, Mobile
+- **Memory Management**: **Direct user control** with ultra-optimized zero-waste design
+- **Compilation**: **Ultra-fast compilation** (lightning-fast incremental builds)
+- **Targets**: **Native only** (focus on desktop/server performance)
 - **Performance vs Simplicity**: **BOTH** - no compromises
 - **Philosophy**: **100% from scratch** - complete control over every aspect
 
@@ -61,7 +65,7 @@ func divide_numbers(a: i32, b: i32) -> Result<i32, Error> {
 }
 ```
 
-#### Innovative Error Handling
+#### Revolutionary Error Handling
 
 ```zen
 // Dual propagation
@@ -86,26 +90,6 @@ type User = {                        // type keyword (more flexible than struct)
 }
 
 let new_user = User("123", "John", null, 25);  // Construction WITHOUT 'new'
-```
-
-#### Multi-target Support (hybrid + build)
-
-```zen
-@target(wasm, native)                       // Annotations with @
-func load_user_data() -> Result<Data, Error> {
-    @target(wasm) {
-        return await fetch_from_api();
-    }
-    
-    @target(native) {
-        return await read_from_file("data.json");
-    }
-}
-
-// AND build system
-// zen build --target wasm     // Web only
-// zen build --target native   // Desktop only  
-// zen build --target hybrid   // Both with @target() conditions
 ```
 
 #### Control Flow
@@ -238,19 +222,17 @@ func transfer_money(from_account: Account, to_account: Account, transfer_amount:
 }
 
 func process_data_file(file_path: string) {
-    const data_file = fs.open(file_path);  // Warning: "File leak probable - no close() detected"
-    // Suggestion: "Use 'with' statement for auto-close?"
+    const data_file = fs.open(file_path);  // Warning: "Resource leak probable - no close() detected"
+    // Suggestion: "Use 'defer' statement for auto-close?"
 }
 ```
 
-#### 2. Intelligent Hot-patching (DEV only)
+#### 2. Ultra-Fast Compilation with Live Updates
 
 ```zen
-@hotpatch  // Development only, NEVER in production
-func calculate_item_price(product_item: Item) -> f64 {
-    // Code modifiable without restart in dev mode
-    // In production, normal compilation
-}
+// Ultra-fast incremental compilation
+// Changes are compiled and applied instantly during development
+// No special annotations needed - all code is "hot-reloadable" via fast compilation
 ```
 
 #### 3. Ultra-clear Error Messages
@@ -270,22 +252,19 @@ Help: Did you mean?
 Suggestion: Use 'to_string()' to convert: let user_age: string = (25).to_string();
 ```
 
-#### 4. Professional Build Output
+#### 4. Direct Memory Control with Zero-Waste Optimization
 
-```bash
-zen build --dev
+```zen
+// Ultra-optimized memory management - user has direct control
+// but with intelligent compiler optimization that wastes nothing
 
-Compilation successful
-Security analysis:
-   - transfer_money(): Race condition detected line 23
-   - validate_input(): Missing validation line 45
-   
-Performance suggestions:
-   - Add logging for auditability
-   - Use atomic transaction
-   - Validate input parameters
-
-Hot-patching enabled for development mode
+func process_large_data(data: LargeDataset) {
+    defer data.cleanup();  // Explicit cleanup control
+    
+    // Compiler optimizes memory layout automatically
+    // Zero-waste allocation patterns
+    // Direct memory control when needed
+}
 ```
 
 ---
@@ -294,64 +273,65 @@ Hot-patching enabled for development mode
 
 ### Chosen Technologies
 
-- **Compiler Language**: **C** (maximum control + portability + performance + learning value)
+- **Compiler Language**: **Zig** (maximum control + safety + performance + modern features)
     - **100% from scratch** - complete control over every aspect
-    - **Universal compilation** via LLVM to native + WebAssembly
+    - **Universal compilation** via LLVM to native
     - **Zero runtime overhead** - efficient machine code generation
-    - **Maximum performance** - C is the gold standard for systems programming
-    - **Complete control** - every byte, every allocation, every optimization decision
-    - **Educational value** - deep understanding of memory management and low-level systems
-    - **Portability** - runs on everything from embedded systems to supercomputers
-    - **Predictable performance** - no hidden costs or abstractions
-    - **Industry standard** - most compilers and systems software written in C
-    - **Direct LLVM integration** - using LLVM C API for code generation
+    - **Memory safety** - compile-time checks prevent most bugs
+    - **Cross-compilation** - Zig excels at targeting different platforms
+    - **Modern systems language** - better than C with comparable performance
+    - **Direct LLVM integration** - excellent LLVM bindings
+    - **Comptime** - powerful compile-time metaprogramming
+    - **Excellent allocator system** - perfect for compiler memory management
 - **Architecture**: Compiler **completely from scratch** (custom LLVM backend)
 - **Approach**: **Open source from day one**
 
 ### Development Tools
 
-- **Commands**: `zen build --target wasm`, `zen run --dev`, `zen build --target hybrid`
+- **Commands**: `zen build`, `zen run --dev`, `zen install`
 - **File Extension**: **`.zen`**
 - **Package Manager**: `zen add express`, `zen install`, `zen build` (Cargo style)
 - **IDE**: Complete **VS Code** support with breakpoints, profiling, debugging
-- **Compilation**: Incremental AND ultra-fast (best of both worlds)
+- **Compilation**: **Ultra-fast incremental** (subsecond builds)
 
 ### Interoperability
 
-- **C Integration**: Native since compiler is in C
-- **C++ Integration**: Excellent via C++ name mangling and ABI compatibility
+- **C Integration**: Native via Zig's excellent C interop
+- **C++ Integration**: Good via Zig's C++ compatibility
 - **Other languages**: To be evaluated based on future community needs
 
 ---
 
 ## 📅 Detailed Timeline and Phases
 
-### Phase 0: C Mastery & Architecture (1-2 months)
+> ⚠️ **Note**: Timeline is subject to change based on development progress and scope adjustments.
 
-**Objective**: Master advanced C for compiler development and design architecture
+### Phase 0: Zig Mastery & Architecture (1-2 months)
+
+**Objective**: Master Zig for compiler development and design architecture
 
 #### Learning Steps:
 
-1. **Modern C techniques** (2 weeks)
-    - Advanced pointer manipulation and memory management
-    - Function pointers and callback systems for compiler phases
-    - Dynamic memory allocation strategies for AST and symbol tables
-    - Modular programming with header files and static libraries
-    - Advanced debugging with valgrind, gdb, and static analysis tools
+1. **Advanced Zig techniques** (2 weeks)
+    - Memory allocators (ArenaAllocator, GeneralPurposeAllocator)
+    - Comptime metaprogramming for compiler optimization
+    - Error handling with Zig's explicit error system
+    - Struct and union design for AST representation
+    - Testing framework and debugging tools
 
-2. **Compiler theory with C** (2 weeks)
-    - Study classic C compiler implementations (TinyCC, LCC)
-    - Memory-efficient AST representation with unions and structs
-    - Hash tables and data structures for symbol tables
-    - String handling and memory pools for efficient compilation
-    - LLVM C API integration patterns
+2. **Compiler theory with Zig** (2 weeks)
+    - Study Zig's own self-hosted compiler architecture
+    - Memory-efficient AST with Zig's tagged unions
+    - Hash maps and data structures using Zig's std library
+    - String handling with Zig's excellent string utilities
+    - LLVM integration via Zig's LLVM bindings
 
 3. **Architecture design** (2-4 weeks)
-    - Struct-based AST design with tagged unions
-    - Manual memory management strategy with arenas and pools
-    - Modular compilation phases with clean interfaces
-    - Error handling with explicit return codes and context
-    - Multi-target compilation architecture
+    - Tagged union AST design with Zig's type system
+    - Arena-based memory management strategy
+    - Modular compilation phases with Zig interfaces
+    - Error propagation with Zig's error system
+    - Performance optimization with comptime
 
 ### Phase 1: Foundations (3-6 months)
 
@@ -359,44 +339,27 @@ Hot-patching enabled for development mode
 
 #### Technical Steps:
 
-1. **Complete Lexer in C** (1 month)
-    - All tokens: `func`, `let`, `const`, `->`, `@target`, etc.
+1. **Complete Lexer in Zig** (1 month)
+    - All tokens: `func`, `let`, `const`, `->`, etc.
     - String interpolation `${}`
     - Numbers, strings, identifiers
     - Comments `//` and `/* */`
-    - Custom lexer with dynamic arrays and efficient string handling
+    - Efficient lexer with ArrayList and excellent string handling
 
-2. **Robust Parser in C** (2 months)
-    - Recursive descent parser with struct-based AST
+2. **Robust Parser in Zig** (2 months)
+    - Recursive descent parser with tagged union AST
     - Arithmetic expressions with operator precedence
     - Variable declarations (`let`/`const`)
     - Function definitions with `func`
     - Basic types: `i32`, `f64`, `string`, `bool`
     - Memory-efficient AST with arena allocation
 
-3. **Code Generator in C** (2-3 months)
-    - LLVM backend using LLVM C API
-    - Manual memory management for variables and constants
+3. **Code Generator in Zig** (2-3 months)
+    - LLVM backend using Zig's LLVM bindings
+    - Efficient memory management for variables and constants
     - Function calls and stack management
     - Arithmetic operations
     - Basic I/O operations
-    - Initial WebAssembly target
-
-#### Phase 1 Deliverables:
-
-```zen
-func main() -> i32 {
-    const first_number: i32 = 10;
-    const second_number: i32 = 20;
-    let calculation_result = add_numbers(first_number, second_number);
-    print(`Result: ${calculation_result}`);
-    return 0;
-}
-
-func add_numbers(x: i32, y: i32) -> i32 {
-    return x + y;
-}
-```
 
 ### Phase 2: Complex Types (6-12 months)
 
@@ -405,7 +368,7 @@ func add_numbers(x: i32, y: i32) -> i32 {
 #### New Features:
 
 - Custom types: `type User = { full_name: string, user_age: i32 }`
-- Arrays: `i32[]`, `User[]` with dynamic memory management
+- Arrays: `i32[]`, `User[]` with efficient memory management
 - Optionals: `?string` with null safety
 - Conditions: classic `if/else` with proper branching
 - Loops: `for`, `while`, ranges `0..10`
@@ -413,141 +376,33 @@ func add_numbers(x: i32, y: i32) -> i32 {
 - Equality: `==` and `is` (value vs reference)
 - Assignments: `+=`, `-=`, `*=`
 
-#### Phase 2 Deliverables:
-
-```zen
-type Person = {
-    full_name: string,
-    person_age: i32,
-    email_address: ?string,
-}
-
-func process_user_list(user_list: Person[]) -> void {
-    for (current_user in user_list) {
-        if (current_user.person_age in 18..65) {
-            print(`Working age: ${current_user.full_name}`);
-        }
-    }
-}
-
-func main() -> i32 {
-    let person_list: Person[] = [
-        Person("Alice", 25, "alice@example.com"),
-        Person("Bob", 17, null),
-    ];
-    
-    process_user_list(person_list);
-    return 0;
-}
-```
-
-### Phase 3: Innovative Error Handling (12-18 months)
+### Phase 3: Revolutionary Error Handling (12-18 months)
 
 **Objective**: Complete error system with breakthrough innovations
 
 #### New Features:
 
-- `Result<T, E>` types with explicit error handling in C
+- `Result<T, E>` types with explicit error handling
 - `throw` and `catch` (revolutionary approach - not try/catch!)
 - Dual propagation: `?` AND `try...else`
 - Ultra-clear error messages with suggestions
 - Real-time compiler advice system
 - Basic race condition detection
-- Manual memory management with automatic cleanup hints
+- Direct memory control with zero-waste optimization
 
-#### Phase 3 Deliverables:
+### Phase 4: Advanced Features & Optimization (18-24 months)
 
-```zen
-type MathError = {
-    error_message: string,
-    error_code: i32,
-}
-
-func divide_numbers(first_num: i32, second_num: i32) -> Result<i32, MathError> {
-    if (second_num == 0) throw MathError("Cannot divide by zero", 400);
-    return first_num / second_num;
-}
-
-func complex_calculation() -> Result<i32, MathError> {
-    let division_result = divide_numbers(10, 2)?;           // Propagation
-    let safe_division = try divide_numbers(20, 0) else 1;   // Default value
-    return division_result + safe_division;
-}
-
-func handle_api_errors() {
-    let api_data = http.get("/api/data") catch {
-        NetworkError(error_msg) => throw MathError(`Network: ${error_msg}`, 500),
-        TimeoutError => return Err(MathError("Timeout", 408)),
-    };
-}
-```
-
-### Phase 4: Multi-target and Async (18-24 months)
-
-**Objective**: WebAssembly + async/await + target system
+**Objective**: Ultra-fast compilation + advanced features + async
 
 #### New Features:
 
-- Complete WebAssembly compilation pipeline via LLVM C API
-- `@target(wasm, native, hybrid)` system with conditional compilation
-- `async`/`await` with efficient async runtime implemented in C
-- Complete cross-compilation for all platforms
-- Adaptive standard library per target
-- Performance optimizations for each target
+- Lightning-fast incremental compilation (subsecond builds)
+- `async`/`await` with efficient async runtime
+- Complete cross-compilation for all native platforms
+- Performance optimizations and zero-waste memory patterns
+- Advanced compiler analysis and suggestions
 
-#### Phase 4 Deliverables:
-
-```zen
-@target(wasm, native)
-async func load_user_data() -> Result<User[], Error> {
-    @target(wasm) {
-        const api_response = await http.get("/api/users");
-        return json.parse<User[]>(api_response.body);
-    }
-    
-    @target(native) {
-        const file_data = await fs.read_file("users.json");
-        return json.parse<User[]>(file_data);
-    }
-}
-
-// Compilation:
-// zen build --target wasm     (web only)
-// zen build --target native   (desktop only)  
-// zen build --target hybrid   (both with conditions)
-```
-
-### Phase 5: Revolutionary Innovations (24-30 months)
-
-**Objective**: Hot-patching + intelligent advice + advanced features
-
-#### New Features:
-
-- `@hotpatch` for development with dynamic loading
-- Generics `<T>` with C-based template system
-- Advanced problem detection (race conditions, memory leaks, security)
-- Intelligent compiler suggestions system
-- Destructuring: `{ full_name, user_age } = user_data`
-- Closures: `(x: i32) -> i32 { x * 2 }`
-- Advanced memory profiling and optimization
-
-#### Phase 5 Deliverables:
-
-```zen
-@hotpatch  // Dev only
-func calculate_product_price<T>(product_item: T, price_processor: (T) -> f64) -> f64 {
-    let { base_price, discount_rate } = product_item;
-    return price_processor(product_item) * (1.0 - discount_rate);
-}
-
-// Compiler messages:
-// Warning: "Race condition possible line 23"
-// Suggestion: "use mutex for concurrent access"
-// Warning: "Memory leak detected: unclosed file handle"
-// Suggestion: "Consider RAII pattern or 'with' statement"
-```
-
-### Phase 6: Complete Ecosystem (30+ months)
+### Phase 5: Complete Ecosystem (24+ months)
 
 **Objective**: Production-ready with thriving ecosystem
 
@@ -556,7 +411,7 @@ func calculate_product_price<T>(product_item: T, price_processor: (T) -> f64) ->
 - Complete package manager: `zen add`, `zen publish`, `zen update`
 - Full standard library (JSON, HTTP, FS, Math, Crypto, etc.)
 - Complete IDE support (VS Code extension, LSP protocol)
-- Advanced compiler optimizations and JIT options
+- Advanced compiler optimizations
 - Interactive documentation system
 - Community registry and third-party packages
 - Professional debugging tools
@@ -573,24 +428,24 @@ func calculate_product_price<T>(product_item: T, price_processor: (T) -> f64) ->
 - ✅ Variables `let`/`const` with strict types
 - ✅ Functions with parameters and return type `func name() -> type`
 - ✅ String interpolation `${variable}`
-- ✅ Manual memory management working efficiently
+- ✅ Direct memory management working efficiently
 
 ### Medium Term (18 months)
 
 - ✅ Complex types: `type User = { ... }`
-- ✅ Arrays: `User[]` with dynamic allocation
+- ✅ Arrays: `User[]` with efficient allocation
 - ✅ Error handling: `Result<T, E>`, `throw`, `catch`
 - ✅ Dual propagation: `?` and `try...else`
 - ✅ Revolutionary error messages
-- ✅ WebAssembly target working
+- ✅ Ultra-fast compilation (subsecond builds)
 - ✅ Early adopter adoption begins
 
 ### Long Term (3+ years)
 
-- ✅ Complete multi-target (Web + Native + Mobile)
+- ✅ Complete native platform support
 - ✅ Cargo-style package manager
 - ✅ Rich standard library
-- ✅ Development hot-patching working
+- ✅ Lightning-fast compilation for all projects
 - ✅ Intelligent compiler advice system
 - ✅ Complete VS Code support
 - ✅ Active community and packages
@@ -603,208 +458,157 @@ func calculate_product_price<T>(product_item: T, price_processor: (T) -> f64) ->
 
 ### Major Technical Challenges
 
-- **Multi-target compilation complexity** (WebAssembly + native via LLVM C API)
-- **Compiler performance** (incremental AND fast compilation)
-- **Manual memory management** design and safety
-- **Secure hot-patching** with dynamic loading (dev only)
+- **Ultra-fast compilation** (subsecond incremental builds)
+- **Compiler performance optimization**
+- **Direct memory control** with zero-waste optimization
 - **Intelligent error messages** without AI dependency
 - **Robust cross-compilation** pipeline
 
-### C-Specific Advantages
+### Zig-Specific Advantages
 
-- **Maximum control** - every byte, every allocation, every optimization decision
-- **Predictable performance** - no hidden costs or runtime overhead
-- **Universal portability** - runs on everything from embedded to supercomputers
-- **Educational value** - deep understanding of memory management and systems
-- **Industry standard** - most successful compilers written in C
-- **Direct LLVM integration** - using native LLVM C API
+- **Memory safety** - compile-time checks prevent most bugs
+- **Excellent performance** - comparable to C with better safety
+- **Modern language** - much better than C for large projects
+- **Outstanding LLVM integration** - mature LLVM bindings
+- **Comptime** - powerful compile-time metaprogramming
+- **Great allocator system** - perfect for compiler development
+- **Cross-compilation** - excellent out-of-the-box support
 
 ### Ecosystem Challenges
 
-- **Memory management complexity** - manual memory management vs ease of use
-- **Development time**: 3-5 years minimum for production
+- **Direct memory control complexity** - giving users control without complexity
+- **Development time**: 2-4 years minimum for production
 - **Community building** and package ecosystem
-- **Learning curve**: C systems programming mastery
+- **Learning curve**: Zig systems programming mastery
 
 ### Mitigation Strategies
 
-- **Start small** with key innovations (error messages, hot-patching)
-- **Immediate open source** to attract C developers and contributors
-- **Focus on differentiators**: predictive errors + hot-patching + simplicity
+- **Start small** with key innovations (error messages, fast compilation)
+- **Immediate open source** to attract Zig developers and contributors
+- **Focus on differentiators**: predictive errors + ultra-fast compilation + zero-waste memory
 - **Exemplary documentation** from Hello World
-- **Progressive learning**: grow C expertise with the project
+- **Progressive learning**: grow Zig expertise with the project
 - **Incremental phases**: each phase usable and demonstrable
-- **Memory safety tools**: valgrind, AddressSanitizer, static analysis
-- **Extensive testing**: unit tests, integration tests, memory leak detection
+- **Memory safety**: Zig's built-in safety features
+- **Extensive testing**: Zig's excellent testing framework
 
 ---
 
 ## 🚀 Immediate Next Steps
 
-### Week 1-2: C Environment Setup
+### Week 1-2: Zig Environment Setup
 
-1. **C development environment**: GCC/Clang, Make/CMake, debugging tools (gdb, valgrind)
-2. **GitHub repo**: project structure, Makefile, README, this roadmap
+1. **Zig development environment**: Latest Zig master, build system, debugging tools
+2. **GitHub repo**: project structure, build.zig, README, this roadmap
 3. **Final name confirmation**: "Zen" or alternative
-4. **Classic C compiler study**: TinyCC, LCC architecture patterns
+4. **Zig compiler study**: Study Zig's self-hosted compiler architecture
 
-### Month 1: First Lexer in C
+### Month 1: First Lexer in Zig
 
 1. **Basic token lexer**: `func`, `let`, `const`, `->`, `{`, `}`
 2. **String processing**: tokenize `${variable}` interpolation
 3. **Comment handling**: `//` and `/* */`
-4. **C-based management**: efficient token arrays and string handling
-5. **Testing framework**: Custom C testing with assertion macros
+4. **Zig-based management**: efficient token arrays and string handling
+5. **Testing framework**: Zig's built-in testing system
 
-### Month 2-3: Parser and AST in C
+### Month 2-3: Parser and AST in Zig
 
 1. **Expression parser**: arithmetic with operator precedence
 2. **Declarations**: `let variable_name: type = value`
 3. **Functions**: `func function_name(params) -> return_type { }`
-4. **Struct-based AST**: C structs with tagged unions for type-safe AST nodes
+4. **Tagged union AST**: Zig's type system for type-safe AST nodes
 5. **Memory management**: Arena allocation for AST nodes
 
-### Month 4-6: First Code Generator
-
-1. **LLVM backend**: Using LLVM C API for code generation
-2. **Variable management**: manual stack and heap allocation
-3. **Function management**: calls, returns, stack frames
-4. **First complete program**: functional calculator
-5. **Basic WebAssembly**: simple target for web deployment
-
 ---
 
-## 📊 Progress Metrics
-
-### Technical Metrics
-
-- **Zen code lines** successfully compiled
-- **Features** implemented vs roadmap percentage
-- **Tests** passing (unit + integration + end-to-end)
-- **Compilation performance** (time, memory usage)
-- **Targets** supported (native platforms, WebAssembly)
-- **Memory efficiency** (compiler and generated code)
-
-### Code Quality Metrics (C-specific)
-
-- **Memory safety**: Zero memory leaks detected by valgrind
-- **Code coverage**: >90% test coverage with gcov
-- **Static analysis**: Clean results from cppcheck, clang-analyzer
-- **Documentation**: Complete docs with doxygen
-- **Performance**: Zero memory leaks and optimal performance
-
-### Community Metrics
-
-- **GitHub stars** and active contributors
-- **Packages** in ecosystem registry
-- **Adoption** by early users and projects
-- **Documentation** completeness and quality
-- **Issues** resolved vs open ratio
-- **Performance benchmarks** vs other languages
-
----
-
-## 💡 Why C is Perfect for Zen
+## 💡 Why Zig is Perfect for Zen
 
 ### Technical Advantages
 
-- **Maximum Control**: Every byte of memory, every CPU instruction under our control
-- **Predictable Performance**: No hidden costs, no garbage collection, no runtime overhead
-- **Universal Portability**: Runs on everything from microcontrollers to supercomputers
-- **Direct Hardware Access**: Optimal code generation and system-level programming
-- **LLVM Integration**: Native LLVM C API for world-class code generation
-- **Industry Standard**: Most successful compilers (GCC, Clang, V8) written in C/C++
+- **Memory Safety**: Compile-time checks prevent buffer overflows, use-after-free
+- **Performance**: Zero-cost abstractions, comparable to C performance
+- **Modern Design**: Clean syntax, excellent error handling, powerful type system
+- **LLVM Integration**: Mature, well-maintained LLVM bindings
+- **Comptime**: Powerful compile-time metaprogramming for compiler optimization
+- **Cross-compilation**: Excellent out-of-the-box support for all platforms
 
 ### Strategic Advantages
 
-- **Proven Track Record**: GCC, TinyCC, LCC, and many successful compilers use C
-- **Learning Value**: Deep understanding of memory management and systems programming
-- **Performance**: Optimal performance with complete control over resources
-- **Ecosystem**: Mature tooling with excellent debugging and profiling tools
-- **Community**: Large community of systems programmers and compiler experts
+- **Self-hosted**: Zig compiler is written in Zig, proving its capability
+- **Learning Value**: Modern systems programming with safety guarantees
+- **Ecosystem**: Growing community of systems programmers
+- **Tooling**: Excellent built-in testing, documentation, and build system
+- **Future-proof**: Actively developed with strong design principles
 
 ### Innovation Enablement
 
-- **Struct-based AST**: Efficient memory layout with tagged unions for type safety
-- **Manual Memory Management**: Perfect model for teaching Zen's automatic ownership
-- **Hot-patching**: Dynamic loading with complete control over module loading
-- **Error System**: Custom error handling system with zero runtime overhead
-- **Compiler Intelligence**: Advanced analysis with optimal performance
+- **Tagged Union AST**: Type-safe, memory-efficient AST representation
+- **Arena Allocation**: Perfect memory management pattern for compilers
+- **Error Propagation**: Explicit error handling matches Zen's design
+- **Comptime Analysis**: Advanced compile-time analysis for Zen features
+- **Zero-waste Memory**: Direct control with safety guarantees
 
 ---
 
 ## 📊 Zen vs Other Languages - Detailed Comparison
 
-### Feature Comparison Matrix
+### Language Comparison Matrix
 
-| Feature             | Zen                  | Rust            | C              | C++             | Go             | Python        |
-|---------------------|----------------------|-----------------|----------------|-----------------|----------------|---------------| 
-| **Learning Curve**  | ⭐⭐ Easy              | ⭐⭐⭐⭐⭐ Very Hard | ⭐⭐⭐⭐ Hard      | ⭐⭐⭐⭐⭐ Very Hard | ⭐⭐⭐ Medium     | ⭐⭐ Easy       |
-| **Compile Speed**   | ⚡⚡⚡ Ultra-fast       | ⭐⭐ Slow         | ⚡⚡⚡ Ultra-fast | ⭐⭐ Slow         | ⚡⚡⚡ Ultra-fast | N/A           |
-| **Runtime Speed**   | ⚡⚡⚡ Native           | ⚡⚡⚡ Native      | ⚡⚡⚡ Native     | ⚡⚡⚡ Native      | ⚡⚡ Fast        | ⭐ Interpreted |
-| **Error Messages**  | 🚀🚀🚀 Revolutionary | ⭐⭐ Good         | ⭐ Basic        | ⭐ Basic         | ⭐⭐ Basic       | ⭐ Cryptic     |
-| **Hot-patching**    | ✅ Yes (Dev)          | ❌ No            | ❌ No           | ❌ No            | ❌ No           | ✅ Yes         |
-| **Memory Safety**   | ✅ Automatic          | ✅ Manual        | ❌ Manual       | ❌ Manual        | ✅ GC           | ❌ Runtime     |
-| **Multi-target**    | ✅ Built-in           | ⭐⭐ Complex      | ✅ Excellent    | ✅ Excellent     | ⭐⭐ Limited     | ❌ Limited     |
-| **Package Manager** | ✅ Built-in           | ✅ Cargo         | ❌ None         | ❌ Various       | ✅ Go mod       | ✅ pip         |
-| **WebAssembly**     | ✅ First-class        | ✅ Good          | ✅ Good         | ✅ Good          | ✅ Basic        | ❌ No          |
+| Feature             | Zen                  | Rust            | C              | C++             | Go             | TypeScript   | Zig             | Python          | Scratch          |
+|---------------------|----------------------|-----------------|----------------|-----------------|----------------|--------------|-----------------|-----------------|------------------|
+| **Learning Curve**  | ⭐⭐ Easy              | ⭐⭐⭐⭐⭐ Very Hard | ⭐⭐⭐⭐ Hard      | ⭐⭐⭐⭐⭐ Very Hard | ⭐⭐⭐ Medium     | ⭐⭐⭐ Medium   | ⭐⭐⭐ Medium      | ⭐ Very Easy     | 🎨 Kindergarten  |
+| **Compile Speed**   | ⚡⚡⚡ Ultra-fast       | ⭐⭐ Slow         | ⚡⚡⚡ Ultra-fast | ⭐⭐ Slow         | ⚡⚡⚡ Ultra-fast | ⚡⚡ Fast      | ⚡⚡⚡ Ultra-fast  | N/A Interpreted | 🎨 Drag & Drop   |
+| **Runtime Speed**   | ⚡⚡⚡ Native           | ⚡⚡⚡ Native      | ⚡⚡⚡ Native     | ⚡⚡⚡ Native      | ⚡⚡ Fast        | ⭐⭐ V8 Engine | ⚡⚡⚡ Native      | ⭐ Very Slow     | 🐌 Educational   |
+| **Error Messages**  | 🚀🚀🚀 Revolutionary | ⭐⭐ Good         | ⭐ Basic        | ⭐ Basic         | ⭐⭐ Basic       | ⭐⭐⭐ Good     | ⭐⭐⭐ Excellent   | ⭐⭐ Cryptic      | 🎨 Visual Blocks |
+| **Memory Control**  | ✅ Direct + Safe      | ⭐⭐ Complex      | ❌ Manual       | ❌ Manual        | ❌ GC           | ❌ GC         | ✅ Direct + Safe | ❌ GC            | N/A Blocks       |
+| **Memory Safety**   | ✅ Compile-time       | ✅ Compile-time  | ❌ Manual       | ❌ Manual        | ✅ GC           | ❌ Runtime    | ✅ Compile-time  | ⭐⭐ Runtime      | ✅ Impossible     |
+| **Cross-compile**   | ✅ Excellent          | ✅ Good          | ✅ Good         | ✅ Good          | ⭐⭐ Limited     | ❌ No         | ✅ Excellent     | ⭐ Limited       | ❌ Web Only       |
+| **Package Manager** | ✅ Built-in           | ✅ Cargo         | ❌ None         | ❌ Various       | ✅ Go mod       | ✅ npm        | ⭐⭐ Basic        | ✅ pip           | ❌ None           |
+| **Simplicity**      | ✅ Very Simple        | ❌ Complex       | ⭐⭐ Moderate    | ❌ Very Complex  | ✅ Simple       | ⭐⭐ Moderate  | ✅ Simple        | ✅ Very Simple   | 🎨 Blocks Only   |
 
 ### Why Zen Wins
 
 **🚀 Against Rust:**
 
 - **10x easier to learn** - no lifetime annotations, no borrow checker complexity
-- **Faster compilation** - incremental + ultra-fast like Go
-- **Better error messages** - predictive with suggestions
-- **Hot-patching** - modify code without restart in development
+- **Faster compilation** - ultra-fast incremental builds (subsecond)
+- **Better error messages** - predictive with intelligent suggestions
+- **Simpler memory model** - direct control without borrowing complexity
 
 **⚡ Against C:**
 
-- **Better error handling** - dual propagation, catch expressions
-- **Type safety** - compile-time type checking prevents many bugs
-- **Modern features** - generics, optionals, pattern matching
-- **Automatic memory management** - ownership system without manual malloc/free
+- **Memory safety** - compile-time checks prevent most bugs
+- **Modern features** - generics, optionals, pattern matching, error handling
+- **Better tooling** - built-in package manager, modern error messages
+- **Easier development** - no manual memory management complexity
 
 **💡 Against C++:**
 
-- **Simpler syntax** - clean, modern syntax without C++ complexity
-- **Better tooling** - built-in package manager, modern error messages
-- **No legacy baggage** - designed from scratch for modern development
+- **Much simpler** - clean syntax without C++ template complexity
 - **Faster compilation** - no template instantiation overhead
+- **Better error messages** - clear, helpful compiler output
+- **Modern design** - built from scratch without legacy baggage
 
 **🎯 Against Go:**
 
-- **Richer type system** - generics, optionals, Result types
+- **No garbage collector** - direct memory control for maximum performance
+- **Richer type system** - generics, optionals, Result types, pattern matching
 - **Better error handling** - dual propagation, catch expressions
-- **WebAssembly first-class** - not an afterthought
-- **More powerful features** - destructuring, pattern matching
+- **More powerful** - systems-level programming capabilities
 
----
+**🔥 Against TypeScript:**
 
-## 🏗 Complete Architecture Overview
+- **Native performance** - compiled to machine code, not interpreted
+- **Real type safety** - compile-time guarantees, no runtime surprises
+- **Systems programming** - direct hardware access and control
+- **No runtime overhead** - zero-cost abstractions
 
-### Compiler Pipeline
+**⚙️ Against Zig:**
 
-```
-[Zen Source Code (.zen)]
-        ↓
-[Lexical Analysis (C Lexer)]
-    → Token arrays with efficient string handling
-        ↓
-[Syntax Analysis (C Parser)]
-    → Struct-based Abstract Syntax Tree (AST) with tagged unions
-        ↓
-[Semantic Analysis (C Analyzer)]
-    → Type checking, scope resolution, error detection
-        ↓
-[Optimization (C Optimizer)]
-    → Dead code elimination, constant folding, inlining
-        ↓
-[Code Generation (LLVM via C API)]
-    ↙                    ↘
-[Native Code]        [WebAssembly]
-(x86, ARM, etc.)     (.wasm files)
-```
+- **Easier to learn** - simpler syntax and concepts
+- **Better error messages** - revolutionary predictive error system
+- **Rich features** - more high-level features while keeping performance
+- **Better ergonomics** - more user-friendly while maintaining power
 
 ---
 
@@ -814,419 +618,128 @@ func calculate_product_price<T>(product_item: T, price_processor: (T) -> f64) ->
 
 | Language | Hello World | Large Project (100k LOC) | Incremental Build |
 |----------|-------------|--------------------------|-------------------|
-| **Zen**  | < 10ms      | < 30s                    | < 2s              |  
+| **Zen**  | < 5ms       | < 15s                    | < 0.5s            |  
 | C (GCC)  | 50ms        | 2+ min                   | 30s               |
 | Rust     | 200ms       | 10+ min                  | 30s               |
 | Go       | 50ms        | 60s                      | 5s                |
 | C++      | 500ms       | 15+ min                  | 2+ min            |
+| Zig      | 30ms        | 90s                      | 10s               |
 
 ### Runtime Performance Goals
 
-| Benchmark            | Zen  | C    | Rust | C++  | Go   | Python |
-|----------------------|------|------|------|------|------|--------| 
-| **Fibonacci (n=40)** | 1.0x | 1.0x | 1.0x | 1.0x | 1.2x | 50x    |
-| **JSON Parsing**     | 1.0x | 1.0x | 1.0x | 1.0x | 1.3x | 10x    |
-| **Web Server**       | 1.0x | 1.0x | 1.0x | 1.0x | 1.1x | 20x    |
-| **Math Heavy**       | 1.0x | 1.0x | 1.0x | 1.0x | 1.2x | 100x   |
+| Benchmark            | Zen  | C    | Rust | C++  | Go   | TypeScript | Zig  |
+|----------------------|------|------|------|------|------|------------|------|
+| **Fibonacci (n=40)** | 1.0x | 1.0x | 1.0x | 1.0x | 1.2x | 20x        | 1.0x |
+| **JSON Parsing**     | 1.0x | 1.0x | 1.0x | 1.0x | 1.3x | 5x         | 1.0x |
+| **Web Server**       | 1.0x | 1.0x | 1.0x | 1.0x | 1.1x | 8x         | 1.0x |
+| **Math Heavy**       | 1.0x | 1.0x | 1.0x | 1.0x | 1.2x | 50x        | 1.0x |
 
 ### Memory Efficiency Goals
 
-- **Binary Size**: Comparable to C, smaller than Rust/Go
-- **Memory Usage**: Zero leaks with careful manual management
+- **Binary Size**: Comparable to C/Zig, much smaller than Go/Rust
+- **Memory Usage**: Zero leaks with efficient direct control
 - **Startup Time**: < 1ms for CLI tools
-- **Compiler Memory**: Efficient arena-based allocation
-
----
-
-## 💻 Complete Code Examples
-
-### Web Server Example
-
-```zen
-import { http, json } from "std";
-
-type User = {
-    user_id: string,
-    full_name: string,
-    email_address: string,
-}
-
-type ApiResponse<T> = {
-    response_data: T,
-    status_code: i32,
-    status_message: string,
-}
-
-let user_list: User[] = [];
-
-func get_all_users() -> ApiResponse<User[]> {
-    return ApiResponse(user_list, 200, "Success");
-}
-
-func create_new_user(user_data: User) -> Result<ApiResponse<User>, Error> {
-    if (user_data.email_address == "") {
-        throw Error("Email is required");
-    }
-    
-    user_list.push(user_data);
-    return ApiResponse(user_data, 201, "User created");
-}
-
-@target(wasm, native)
-async func main() -> i32 {
-    let web_server = http.create_server();
-    
-    web_server.get("/users", (request, response) => {
-        let api_response = get_all_users();
-        response.json(api_response);
-    });
-    
-    web_server.post("/users", async (request, response) => {
-        let new_user_data = try json.parse<User>(request.body) else {
-            return response.status(400).json(ApiResponse(null, 400, "Invalid JSON"));
-        };
-        
-        let creation_result = create_new_user(new_user_data) catch {
-            ValidationError(error_msg) => return response.status(400).json(ApiResponse(null, 400, error_msg)),
-            DatabaseError(error_msg) => return response.status(500).json(ApiResponse(null, 500, error_msg)),
-        };
-        
-        response.status(201).json(creation_result);
-    });
-    
-    @target(wasm) {
-        web_server.listen(3000, "0.0.0.0");
-        print("Server running on http://localhost:3000");
-    }
-    
-    @target(native) {
-        web_server.listen(8080, "127.0.0.1");
-        print("Native server running on http://localhost:8080");
-    }
-    
-    return 0;
-}
-```
-
-### Desktop Application Example
-
-```zen
-import { gui, fs } from "std";
-
-type AppState = {
-    current_file_path: ?string,
-    file_content: string,
-    is_file_dirty: bool,
-}
-
-@hotpatch
-func save_current_file(app_state: AppState) -> Result<void, Error> {
-    if (app_state.current_file_path is null) {
-        let file_path = gui.show_save_dialog("Save File", "*.zen");
-        if (file_path is null) return;
-        app_state.current_file_path = file_path;
-    }
-    
-    fs.write_file(app_state.current_file_path, app_state.file_content)?;
-    app_state.is_file_dirty = false;
-    return;
-}
-
-func main() -> i32 {
-    let desktop_app = gui.create_app("Zen Editor");
-    let application_state = AppState(null, "", false);
-    
-    let main_window = desktop_app.create_window(800, 600, "Zen Code Editor");
-    let window_menu_bar = main_window.create_menu_bar();
-    
-    let file_menu = window_menu_bar.add_menu("File");
-    file_menu.add_item("Save", "Ctrl+S", () => {
-        let save_result = save_current_file(application_state) catch {
-            IOError(error_msg) => gui.show_error(`Save failed: ${error_msg}`),
-        };
-    });
-    
-    let code_editor = main_window.create_text_area();
-    code_editor.on_change((updated_content: string) => {
-        application_state.file_content = updated_content;
-        application_state.is_file_dirty = true;
-        main_window.set_title(`Zen Editor ${application_state.is_file_dirty ? "*" : ""}`);
-    });
-    
-    desktop_app.run();
-    return 0;
-}
-```
-
-### CLI Tool Example
-
-```zen
-import { cli, fs, json } from "std";
-
-type ToolConfig = {
-    input_file_path: string,
-    output_file_path: string,
-    output_format: string,
-    verbose_mode: bool,
-}
-
-func parse_command_arguments() -> Result<ToolConfig, Error> {
-    let argument_parser = cli.create_parser("zen-tool", "Advanced file processor");
-    
-    argument_parser.add_arg("input", "Input file path", true);
-    argument_parser.add_arg("output", "Output file path", true);
-    argument_parser.add_flag("verbose", "v", "Verbose output", false);
-    argument_parser.add_option("format", "f", "Output format (json|yaml|toml)", "json");
-    
-    let parsed_args = argument_parser.parse()?;
-    
-    return ToolConfig(
-        parsed_args.input,
-        parsed_args.output,
-        parsed_args.format,
-        parsed_args.verbose
-    );
-}
-
-func process_input_file(tool_config: ToolConfig) -> Result<void, Error> {
-    if (tool_config.verbose_mode) {
-        print(`Processing ${tool_config.input_file_path} -> ${tool_config.output_file_path}`);
-    }
-    
-    let file_content = fs.read_file(tool_config.input_file_path)?;
-    let parsed_data = json.parse(file_content)?;
-    
-    let formatted_output = switch tool_config.output_format {
-        case "json": return json.stringify(parsed_data, 2),
-        case "yaml": return yaml.stringify(parsed_data),
-        case "toml": return toml.stringify(parsed_data),
-        default: throw Error(`Unsupported format: ${tool_config.output_format}`),
-    };
-    
-    fs.write_file(tool_config.output_file_path, formatted_output)?;
-    
-    if (tool_config.verbose_mode) {
-        print("Processing completed successfully");
-    }
-    
-    return;
-}
-
-func main() -> i32 {
-    let program_config = parse_command_arguments() catch {
-        ArgumentError(error_msg) => {
-            print(`Error: ${error_msg}`);
-            return 1;
-        },
-    };
-    
-    process_input_file(program_config) catch {
-        IOError(error_msg) => {
-            print(`IO Error: ${error_msg}`);
-            return 2;
-        },
-        ParseError(error_msg) => {
-            print(`Parse Error: ${error_msg}`);
-            return 3;
-        },
-    };
-    
-    return 0;
-}
-```
+- **Compiler Memory**: Ultra-efficient with arena allocation
 
 ---
 
 ## ❓ Frequently Asked Questions
 
+> ⚠️ **Note**: FAQ subject to updates as project evolves.
+
 ### **General Questions**
 
-**Q: Why create another programming language?**
-A: Existing languages have fundamental flaws - Rust is too complex, Go lacks features, JavaScript is messy, Python is
-slow. Zen combines the best of all worlds with revolutionary innovations like predictive errors and hot-patching.
+**Q: Why create another programming language when Zig exists?**
+A: Zen focuses on extreme simplicity and revolutionary error messages while Zig targets C replacement. Zen aims to be
+accessible to everyone while Zig requires systems programming knowledge.
 
-**Q: How is Zen different from C?**
-A: Zen provides modern features (generics, optionals, error handling) with automatic memory management, while C requires
-manual memory management. Zen compiles to the same performance as C but is much easier and safer to use.
+**Q: How is Zen different from Zig?**
+A: Zen provides higher-level features with the same performance, revolutionary error messages, and extreme ease of
+learning. Zig is a C replacement; Zen targets all developers.
 
-**Q: Why C for the compiler instead of Rust or other languages?**
-A: C provides maximum control over every aspect of the compiler, predictable performance with no hidden costs, universal
-portability, and direct LLVM integration. We get complete understanding of memory management and can implement
-innovations like hot-patching with full control over dynamic loading.
-
-**Q: Is this just another systems language?**
-A: No! Zen targets everything - web (WebAssembly), desktop, mobile, backend. It's a universal language that's both
-beginner-friendly and expert-powerful.
+**Q: Why Zig for the compiler instead of Rust or C?**
+A: Zig provides the perfect balance - C-level performance with memory safety, excellent cross-compilation, powerful
+comptime, and mature LLVM integration. It's ideal for building compilers.
 
 ### **Technical Questions**
 
-**Q: How does automatic ownership work without garbage collection?**
-A: Zen uses compile-time analysis to determine object lifetimes, implementing ownership rules similar to Rust but
-simplified. The compiler inserts cleanup code automatically - developers never think about memory management.
+**Q: How does direct memory control work safely?**
+A: Users get explicit control over allocations and deallocations, but the compiler provides safety guarantees and
+zero-waste optimization. Think of it as "C control with Zig safety."
 
-**Q: How does hot-patching work securely?**
-A: Hot-patching only works in development mode with `@hotpatch` annotation. It uses dynamic loading to replace
-function implementations. In production builds, `@hotpatch` is completely ignored.
+**Q: How do you achieve subsecond compilation?**
+A: Ultra-efficient incremental compilation with intelligent caching, minimal parsing overhead, and optimized LLVM
+integration. Every change is compiled instantly.
 
 **Q: Can I use existing C libraries?**
-A: Yes! Since the compiler is written in C, C library integration is seamless. We'll provide automatic header parsing
-and binding generation for popular libraries.
+A: Yes! Via Zig's excellent C interop, we inherit seamless C library integration with automatic header translation.
 
-**Q: How do you ensure the compiler itself is bug-free?**
-A: We use extensive testing with valgrind for memory leak detection, AddressSanitizer for memory safety, static analysis
-tools, and careful manual memory management patterns with arena allocation.
+### **Development Questions**
 
-### **Adoption Questions**
+**Q: When will Zen be usable?**
+A: Alpha versions suitable for experimentation within 6-12 months. Production-ready version targeted for 24 months.
 
-**Q: When will Zen be production ready?**
-A: Version 1.0 is targeted for 24 months. Early versions (0.5+) will be suitable for experimental projects and
-contributions.
+**Q: How can I contribute?**
+A: Project will be open source from day one. We need help with Zig development, standard library, tooling, and
+documentation.
 
-**Q: How can I migrate from C/C++/Python/JavaScript?**
-A: We're building migration guides and tools. Zen's syntax is familiar to C developers, and the type system catches
-migration errors early.
-
-**Q: Will there be IDE support?**
-A: Yes! Complete VS Code extension with LSP, syntax highlighting, debugging, and profiling. Other IDE support will
-follow community demand.
-
-**Q: How do I contribute?**
-A: The project will be open source from day one. Check the Contribution Guide below for technical details and coding
-standards.
+**Q: What's the migration path from other languages?**
+A: We're building migration tools and guides. Zen's familiar syntax makes transition easier from C/C++/Go/JavaScript
+backgrounds.
 
 ---
 
-## 🗓 Release Roadmap
+## 📅 Release Roadmap
+
+> ⚠️ **Important**: All dates and features are tentative and subject to change based on development progress.
 
 ### Version Timeline
 
-| Version         | Timeline | Key Features                                    | Status         |
-|-----------------|----------|-------------------------------------------------|----------------|
-| **v0.1 Alpha**  | Month 6  | Hello World, basic arithmetic, functions        | 🔄 In Progress |
-| **v0.2 Alpha**  | Month 9  | Types, structs, arrays, control flow            | 📋 Planned     |
-| **v0.3 Beta**   | Month 12 | Error handling, Result types, catch expressions | 📋 Planned     |
-| **v0.4 Beta**   | Month 15 | WebAssembly target, @target annotations         | 📋 Planned     |
-| **v0.5 RC**     | Month 18 | Async/await, standard library, package manager  | 📋 Planned     |
-| **v1.0 Stable** | Month 24 | Production ready, complete tooling, community   | 🎯 Target      |
-
-### Feature Milestones
-
-#### v0.1 Alpha - Foundation
-
-- ✅ C-based lexer and parser
-- ✅ Arithmetic expressions
-- ✅ Variables (`let`/`const`) with type checking
-- ✅ Functions with parameters and return types
-- ✅ String interpolation
-- ✅ Manual memory management with arenas
-
-#### v0.2 Alpha - Complex Types
-
-- 📋 Custom types (`type User = { ... }`)
-- 📋 Arrays with dynamic allocation
-- 📋 Optional types (`?T`)
-- 📋 Control flow (`if`/`else`, `for`, `while`)
-- 📋 Pattern matching basics
-
-#### v0.3 Beta - Error Handling Revolution
-
-- 📋 Native `Result<T, E>` types in C
-- 📋 `throw`/`catch` expressions (not try/catch!)
-- 📋 Dual propagation (`?` and `try...else`)
-- 📋 Intelligent error messages with suggestions
-- 📋 Basic compiler advice system
-
-#### v0.4 Beta - Multi-target
-
-- 📋 WebAssembly compilation via LLVM C API
-- 📋 `@target(wasm, native, hybrid)` system
-- 📋 Cross-compilation for all platforms
-- 📋 Target-specific standard library
-
-#### v0.5 RC - Advanced Features
-
-- 📋 `async`/`await` with C async runtime
-- 📋 `@hotpatch` development mode
-- 📋 Complete standard library
-- 📋 Package manager (`zen add`, `zen publish`)
-- 📋 VS Code extension
-
-#### v1.0 Stable - Production Ready
-
-- 📋 All innovations implemented and tested
-- 📋 Complete documentation and tutorials
-- 📋 Community packages and ecosystem
-- 📋 Performance benchmarks achieved
-- 📋 Production deployments
+| Version         | Timeline | Key Features                                    | Status      |
+|-----------------|----------|-------------------------------------------------|-------------|
+| **v0.1 Alpha**  | Month 6  | Hello World, basic arithmetic, functions        | 🔄 Planning |
+| **v0.2 Alpha**  | Month 9  | Types, structs, arrays, control flow            | 📋 Planned  |
+| **v0.3 Beta**   | Month 12 | Error handling, Result types, catch expressions | 📋 Planned  |
+| **v0.4 Beta**   | Month 15 | Ultra-fast compilation, advanced optimization   | 📋 Planned  |
+| **v0.5 RC**     | Month 18 | Async/await, standard library, package manager  | 📋 Planned  |
+| **v1.0 Stable** | Month 24 | Production ready, complete tooling, community   | 🎯 Target   |
 
 ---
 
-### Quality Gates
+## 🚧 Current Status & Next Steps
 
-**Every Commit Must Pass:**
+> ⚠️ **Project Status**: Currently in initial planning and design phase. Implementation has not started yet.
 
-- ✅ All unit tests (>95% coverage with gcov)
-- ✅ Memory leak check (valgrind clean)
-- ✅ Static analysis (cppcheck, clang-analyzer clean)
-- ✅ Integration tests
-- ✅ Performance regression tests
+### Immediate Priorities (Next 2 weeks)
 
-**Every Release Must Pass:**
+1. **Finalize language specifications** - Complete syntax and feature decisions
+2. **Set up development environment** - Zig toolchain and project structure
+3. **Create project repository** - GitHub repo with initial documentation
+4. **Begin Zig learning phase** - Master advanced Zig concepts for compiler development
 
-- ✅ Complete end-to-end test suite
-- ✅ Cross-platform compilation tests
-- ✅ WebAssembly target validation
-- ✅ Security audit (static analysis + fuzzing)
-- ✅ Performance benchmarks vs targets
+### Short-term Goals (Next 3 months)
 
-### Testing Tools
-
-- **Unit Tests**: Custom C testing framework with assertion macros
-- **Memory**: Valgrind for leak detection, AddressSanitizer for memory safety
-- **Performance**: Custom benchmarking with C timing code
-- **Fuzzing**: AFL++ with custom grammar-based fuzzer
-- **Static Analysis**: cppcheck, clang-analyzer, custom lints
+1. **Complete language design** - Finalize all syntax and semantic decisions
+2. **Implement basic lexer** - Tokenization of core language constructs
+3. **Build parser foundation** - Basic expression parsing and AST generation
+4. **Establish testing framework** - Comprehensive test suite for compiler components
 
 ---
 
-### Contribution Process
+## 📞 Contact & Community
 
-1. **Create Issue** - Discuss feature/bug before coding
-2. **Fork Repository** - Work in your own fork
-3. **Create Branch** - `feature/hot-patching` or `fix/lexer-bug`
-4. **Code + Tests** - Include comprehensive tests
-5. **Quality Check** - `make test`, `make valgrind`, `make analyze`
-6. **Pull Request** - Detailed description and tests
-7. **Code Review** - At least 2 maintainer approvals
-8. **Merge** - Squash commits for clean history
+> ⚠️ **Note**: Community channels and contact information will be established as the project progresses.
 
-### Areas Needing Help
+Project is currently in early development phase. Community channels and contribution guidelines will be established once
+initial implementation begins.
 
-**High Priority:**
+---
 
-- C-based lexer optimizations and error recovery
-- Struct-based parser robustness and better error messages
-- LLVM integration via C API
-- Standard library implementation with C
+## 📄 License
 
-**Medium Priority:**
+> ⚠️ **License**: To be determined. Likely open source (MIT or Apache 2.0) but final decision pending.
 
-- VS Code extension development (TypeScript + C LSP)
-- Documentation and examples with custom generator
-- Package manager design inspired by modern tools
-- Cross-platform testing with CI/CD
+---
 
-**Low Priority:**
-
-- Website and marketing materials
-- Additional IDE support
-- Community management tools
-
-### Coding Philosophy
-
-- **C best practices** - manual memory management, explicit error handling
-- **Performance with control** - maximum efficiency with complete control
-- **Struct-based design** - type-safe AST with tagged unions
-- **Standard library usage** - minimal dependencies, mostly libc
-- **Memory safety** - explicit ownership and cleanup patterns
-- **Testability** - every feature must be testable with custom framework
+*This document represents the current vision and plan for the Zen programming language. All specifications, timelines,
+and features are subject to change as development progresses and community feedback is incorporated.*

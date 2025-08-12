@@ -1,16 +1,23 @@
-# Zen Programming Language Compiler - .gitignore
+# Zen Programming Language Compiler - .gitignore (Zig-based)
 
 # =============================================================================
-# Build Artifacts
+# Zig Build System & Artifacts
 # =============================================================================
 
-# Compiled Object files
+# Zig build output directory
+zig-out/
+zig-cache/
+.zig-cache/
+
+# Compiled executables
+zen
+zen.exe
+zen-compiler
+zen-compiler.exe
+
+# Object files and libraries
 *.o
 *.obj
-*.lo
-*.la
-*.al
-*.libs
 *.so
 *.so.*
 *.dylib
@@ -18,34 +25,40 @@
 *.a
 *.lib
 
-# Executables
-*.exe
-*.out
-*.app
-zen
-zen.exe
-zen-compiler
-zen-compiler.exe
-
 # Debug files
 *.dSYM/
 *.su
 *.idb
 *.pdb
 
+# LLVM IR files
+*.ll
+*.bc
+
 # =============================================================================
-# CMake
+# Zig-specific Files
 # =============================================================================
 
-# CMake build directories
-build/
-cmake-build-*/
-CMakeFiles/
-CMakeCache.txt
-cmake_install.cmake
-Makefile
-*.cmake
-!CMakeLists.txt
+# Zig package manager files
+*.zon.lock
+.zigmod/
+deps.zig
+zig.mod
+
+# Zigmod & Gyro package managers
+.gyro/
+gyro.zzz
+
+# Zig test files and outputs
+zig-test-*
+test-results/
+test_output/
+
+# Zig documentation output
+docs/
+docs/html/
+docs/latex/
+docs/xml/
 
 # =============================================================================
 # IDE Files
@@ -56,15 +69,13 @@ Makefile
 *.iws
 *.iml
 *.ipr
-cmake-build-debug/
-cmake-build-release/
 
 # Visual Studio Code
 .vscode/
 *.code-workspace
 
 # Visual Studio
-*.vs/
+.vs/
 *.vcxproj
 *.vcxproj.filters
 *.vcxproj.user
@@ -78,9 +89,9 @@ cmake-build-release/
 *.swp
 *.swo
 *~
+.netrwhist
 
 # Emacs
-*~
 \#*\#
 /.emacs.desktop
 /.emacs.desktop.lock
@@ -88,6 +99,13 @@ cmake-build-release/
 auto-save-list
 tramp
 .\#*
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Atom
+.atom/
 
 # =============================================================================
 # Operating System Files
@@ -129,7 +147,6 @@ $RECYCLE.BIN/
 *.lnk
 
 # Linux
-*~
 .fuse_hidden*
 .directory
 .Trash-*
@@ -142,6 +159,9 @@ $RECYCLE.BIN/
 # GDB
 .gdb_history
 gdb.txt
+
+# LLDB
+.lldbinit
 
 # Valgrind
 vgcore.*
@@ -157,22 +177,26 @@ gmon.out
 *.gcda
 *.gcno
 *.profdata
+callgrind.out.*
+perf.data*
 
 # Static Analysis
 *.plist
 scan-build-*/
 
-# =============================================================================
-# Documentation
-# =============================================================================
+# Address Sanitizer
+*.asan
+*.tsan
+*.msan
+*.ubsan
 
-# Doxygen
-docs/html/
-docs/latex/
-docs/xml/
+# Language Server Protocol
+# ZLS (Zig Language Server)
+.zls/
+zls.json
 
 # =============================================================================
-# Testing
+# Testing & Benchmarking
 # =============================================================================
 
 # Test results
@@ -185,63 +209,89 @@ test_results/
 coverage/
 *.info
 lcov.info
+kcov-output/
+
+# Benchmark results
+benchmarks/results/
+*.benchmark
+benchmark_results.json
+
+# Fuzzing
+fuzz-*
+crashes/
+hangs/
 
 # =============================================================================
-# Package Managers (future)
+# Zen Language Specific
 # =============================================================================
 
-# Node.js (if using for tooling)
-node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# Python (if using for scripts)
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
-
-# =============================================================================
-# Zen-specific Files
-# =============================================================================
-
-# Zen test files and outputs
-test_output/
+# Zen source outputs
 *.zen.out
-*.zen.wasm
 *.zen.exe
-*.zen.obj
+*.zen.o
 
-# Temporary compilation files
-*.tmp.c
-*.tmp.h
-*.intermediate
+# Zen intermediate files
+*.zen.ll
+*.zen.bc
+*.zen.s
+
+# Zen AST dumps
+*.ast
+*.tokens
+*.parse-tree
+
+# Zen compiler cache
+.zen-cache/
+zen_cache/
 
 # Zen package cache (future)
 .zen/
 zen_packages/
 
-# Benchmark results
-benchmarks/results/
-*.benchmark
+# Zen standard library build artifacts
+stdlib/zig-out/
+stdlib/zig-cache/
+
+# Temporary compilation files
+*.tmp.zig
+*.intermediate
+
+# =============================================================================
+# CI/CD & Build Scripts
+# =============================================================================
+
+# GitHub Actions
+.github/workflows/*.log
+
+# Build artifacts from CI
+ci-build/
+artifacts/
+
+# Generated build scripts
+generated_*
+gen_*
+
+# Build tools cache
+.build_cache/
+build_cache/
+
+# =============================================================================
+# Package Managers & Dependencies
+# =============================================================================
+
+# Git submodules (if using for dependencies)
+# Uncomment if using submodules
+# deps/*/
+
+# =============================================================================
+# CI/CD
+# =============================================================================
+
+# Circle CI
+.circleci/
+
+# Travis CI
+.travis.yml
 
 # =============================================================================
 # Security & Secrets
@@ -255,20 +305,24 @@ secrets.json
 *.key
 *.pem
 *.crt
+config.secret
 
 # =============================================================================
 # Logs
 # =============================================================================
 
-logs
+logs/
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
+compiler.log
+debug.log
+error.log
 
 # =============================================================================
-# Backup Files
+# Backup & Temporary Files
 # =============================================================================
 
 *.bak
@@ -276,12 +330,84 @@ lerna-debug.log*
 *.old
 *.orig
 *.rej
-*.swp
-*.tmp
+
+# Patch files
+*.patch
+*.diff
+
+# =============================================================================
+# Performance Profiling
+# =============================================================================
+
+# Perf tools
+perf.data
+perf.data.old
+*.perf
+
+# Intel VTune
+r0*hs
+*.amplxe
+
+# =============================================================================
+# Memory Analysis
+# =============================================================================
+
+# Valgrind outputs
+massif.out.*
+helgrind.out.*
+
+# =============================================================================
+# Editor-specific
+# =============================================================================
+
+# Eclipse
+.project
+.metadata
+bin/
+tmp/
+*~.nib
+local.properties
+.settings/
+.loadpath
+.recommenders
+
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# =============================================================================
+# Custom Project Files
+# =============================================================================
+
+# Local configuration
+local.zig
+local_config.zig
+
+# Experimental features
+experimental/
+playground/
+
+# Personal notes and TODOs
+NOTES.md
+TODO.md
+personal_*.md
+
+# =============================================================================
+# Docker
+# =============================================================================
+
+# Docker
+Dockerfile.local
+docker-compose.override.yml
+.dockerignore.local
 
 # =============================================================================
 # Custom Ignores
 # =============================================================================
 
 # Add your custom ignores here
-# example_ignore/
+# custom_folder/
+# *.custom_extension

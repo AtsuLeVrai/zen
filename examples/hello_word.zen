@@ -1,6 +1,9 @@
 func main() -> i32 {
-    // Print a simple message to the console
-    print("Hello, World!");
+    // Define a constant string message
+    const message = "Hello, World!";
+
+    // Print the message using string interpolation
+    print(`Message: ${message}`);  // String interpolation syntax
 
     // Return 0 to indicate successful execution
     return 0;
