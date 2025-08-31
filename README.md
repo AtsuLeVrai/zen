@@ -4,6 +4,14 @@
 
 ---
 
+## 🔬 Concept Status: Research Phase
+
+**This is a conceptual programming language design, not an active development project.** Zen represents experimental ideas about language design philosophy and syntax - no implementation currently exists or is planned in the immediate future.
+
+This documentation serves as a thought experiment and potential foundation for future language development efforts.
+
+---
+
 ## Philosophy: Against Needless Complexity
 
 ### The Core Problem
