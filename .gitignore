@@ -411,3 +411,4 @@ docker-compose.override.yml
 # Add your custom ignores here
 # custom_folder/
 # *.custom_extension
+.claude/

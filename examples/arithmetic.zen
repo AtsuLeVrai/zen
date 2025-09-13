@@ -1,0 +1,11 @@
+fn add(x: i32, y: i32) -> i32 {
+    return x + y;
+}
+
+fn main() -> i32 {
+    const a = 10;
+    const b = 20;
+    const result = add(a, b * 2);
+    print_int(result);
+    return 0;
+}
